@@ -16,23 +16,24 @@ ELSE
 
 	** ----------------------------------------------------------------------------------
 	** Versi Baru
-	** ----------------------------------------------------------------------------------	
+	** ----------------------------------------------------------------------------------
 	PUBLIC cKey AS Character
 	cKey = '041D-2969' && Acer
-	*cKey = '30D7-5545' && DMA		
+	*cKey = '30D7-5545' && DMA
 	
-	*cKey = 'EC12-BCD3' && INDOCEV Solo ( old )			
+	*cKey = 'EC12-BCD3' && INDOCEV Solo ( old )
 	*cKey = 'A46F-E4DC' && INDOCEV Surabaya Atas 12-03-2025 ( new struktur customer_code=12 , tr_number=14 )
 	*cKey = '6CAE-F2CD' && INDOCEV Surabaya Bawah 12-03-2025 ( new struktur customer_code=12 , tr_number=14 )
 	*cKey = '6AFB-64FD' && INDOCEV Citraland 12-03-2025 ( new struktur customer_code=12 , tr_number=14 )
 	*cKey = '066F-95A1' && INDOCEV Cilegon 12-03-2025 ( new struktur customer_code=12 , tr_number=14 )
-	*cKey = 'C002-28B8' && INDOCEV Medan 12-03-2025 ( new struktur customer_code=12 , tr_number=14 )	
+	*cKey = 'C002-28B8' && INDOCEV Medan 12-03-2025 ( new struktur customer_code=12 , tr_number=14 )
 
-	*cKey = '909F-46BB' && INDOCEV Soeta T2 13-03-2025
-	*cKey = '84CD-6381' && INDOCEV Soeta T3 14-03-2025	
-	*cKey = 'F6F6-288E' && INDOCEV Jogja 15-03-2025	
+	*cKey = 'F6F6-288E' && INDOCEV Jogja 15-03-2025
 	
 	*cKey = 'E048-F9C8' && PERMATA VALAS UTAMA 16-03-2025
+	*cKey = '909F-46BB' && INDOCEV Soeta T2 16-03-2025
+	*cKey = '84CD-6381' && INDOCEV Soeta T3 16-03-2025
+
 	** ----------------------------------------------------------------------------------
 	
 	IF ReadSerialDiskDrive('C:\') <> cKey

@@ -1,6 +1,6 @@
 *       *********************************************************
 *       *                                                         
-*       * 16/03/2025        MENU_DEVELOPER.MPR          12:57:52  
+*       * 03/16/25         MENU_DEVELOPER.MPR           18:43:55  
 *       *                                                         
 *       *********************************************************
 *       *                                                         
@@ -124,10 +124,10 @@ ENDIF
 
 DEFINE MENU (m.cMenuName) IN (m.oFormRef.Name) BAR
 
-DEFINE PAD _74y0rscz6 OF (m.cMenuName) PROMPT "File" COLOR SCHEME 3 ;
+DEFINE PAD _74y145dgr OF (m.cMenuName) PROMPT "File" COLOR SCHEME 3 ;
 	KEY ALT+F, "" ;
 	SKIP FOR lmenuof
-ON PAD _74y0rscz6 OF (m.cMenuName) ACTIVATE POPUP (a_menupops[1])
+ON PAD _74y145dgr OF (m.cMenuName) ACTIVATE POPUP (a_menupops[1])
 
 DEFINE POPUP (a_menupops[1]) MARGIN RELATIVE SHADOW COLOR SCHEME 4
 DEFINE BAR 1 OF (a_menupops[1]) PROMPT "Setting"
@@ -138,36 +138,36 @@ DEFINE BAR 5 OF (a_menupops[1]) PROMPT "Keluar"
 ON BAR 1 OF (a_menupops[1]) ACTIVATE POPUP (a_menupops[2])
 ON BAR 3 OF (a_menupops[1]) ACTIVATE POPUP (a_menupops[3])
 ON SELECTION BAR 4 OF (a_menupops[1]) ;
-	DO _74y0rscz7 ;
-	IN LOCFILE("PMCDESKTOP_16032025\MENU\MENU_DEVELOPER" ,"MPX;MPR|FXP;PRG" ,"WHERE is MENU_DEVELOPER?")
+	DO _74y145dgs ;
+	IN LOCFILE("PMCDESKTOP\MENU\MENU_DEVELOPER" ,"MPX;MPR|FXP;PRG" ,"WHERE is MENU_DEVELOPER?")
 ON SELECTION BAR 5 OF (a_menupops[1]) ;
-	DO _74y0rscz8 ;
-	IN LOCFILE("PMCDESKTOP_16032025\MENU\MENU_DEVELOPER" ,"MPX;MPR|FXP;PRG" ,"WHERE is MENU_DEVELOPER?")
+	DO _74y145dgt ;
+	IN LOCFILE("PMCDESKTOP\MENU\MENU_DEVELOPER" ,"MPX;MPR|FXP;PRG" ,"WHERE is MENU_DEVELOPER?")
 
 DEFINE POPUP (a_menupops[2]) MARGIN RELATIVE SHADOW COLOR SCHEME 4
 DEFINE BAR 1 OF (a_menupops[2]) PROMPT "Setting Company"
 DEFINE BAR 2 OF (a_menupops[2]) PROMPT "Setting User" ;
 	SKIP FOR lmenuof
 ON SELECTION BAR 1 OF (a_menupops[2]) ;
-	DO _74y0rscz9 ;
-	IN LOCFILE("PMCDESKTOP_16032025\MENU\MENU_DEVELOPER" ,"MPX;MPR|FXP;PRG" ,"WHERE is MENU_DEVELOPER?")
+	DO _74y145dgu ;
+	IN LOCFILE("PMCDESKTOP\MENU\MENU_DEVELOPER" ,"MPX;MPR|FXP;PRG" ,"WHERE is MENU_DEVELOPER?")
 ON SELECTION BAR 2 OF (a_menupops[2]) ;
-	DO _74y0rscza ;
-	IN LOCFILE("PMCDESKTOP_16032025\MENU\MENU_DEVELOPER" ,"MPX;MPR|FXP;PRG" ,"WHERE is MENU_DEVELOPER?")
+	DO _74y145dgv ;
+	IN LOCFILE("PMCDESKTOP\MENU\MENU_DEVELOPER" ,"MPX;MPR|FXP;PRG" ,"WHERE is MENU_DEVELOPER?")
 
 DEFINE POPUP (a_menupops[3]) MARGIN RELATIVE SHADOW COLOR SCHEME 4
 DEFINE BAR 1 OF (a_menupops[3]) PROMPT "Master Kas"
 DEFINE BAR 2 OF (a_menupops[3]) PROMPT "Master Bank"
 DEFINE BAR 3 OF (a_menupops[3]) PROMPT "Master Pos"
 ON SELECTION BAR 1 OF (a_menupops[3]) ;
-	DO _74y0rsczb ;
-	IN LOCFILE("PMCDESKTOP_16032025\MENU\MENU_DEVELOPER" ,"MPX;MPR|FXP;PRG" ,"WHERE is MENU_DEVELOPER?")
+	DO _74y145dgw ;
+	IN LOCFILE("PMCDESKTOP\MENU\MENU_DEVELOPER" ,"MPX;MPR|FXP;PRG" ,"WHERE is MENU_DEVELOPER?")
 ON SELECTION BAR 2 OF (a_menupops[3]) ;
-	DO _74y0rsczc ;
-	IN LOCFILE("PMCDESKTOP_16032025\MENU\MENU_DEVELOPER" ,"MPX;MPR|FXP;PRG" ,"WHERE is MENU_DEVELOPER?")
+	DO _74y145dgx ;
+	IN LOCFILE("PMCDESKTOP\MENU\MENU_DEVELOPER" ,"MPX;MPR|FXP;PRG" ,"WHERE is MENU_DEVELOPER?")
 ON SELECTION BAR 3 OF (a_menupops[3]) ;
-	DO _74y0rsczd ;
-	IN LOCFILE("PMCDESKTOP_16032025\MENU\MENU_DEVELOPER" ,"MPX;MPR|FXP;PRG" ,"WHERE is MENU_DEVELOPER?")
+	DO _74y145dgy ;
+	IN LOCFILE("PMCDESKTOP\MENU\MENU_DEVELOPER" ,"MPX;MPR|FXP;PRG" ,"WHERE is MENU_DEVELOPER?")
 
 ACTIVATE MENU (m.cMenuName) NOWAIT
 
@@ -179,7 +179,7 @@ ENDIF
 
 *       *********************************************************
 *       *                                                         
-*       * _74Y0RSCZ7  ON SELECTION BAR 4 OF POPUP file            
+*       * _74Y145DGS  ON SELECTION BAR 4 OF POPUP file            
 *       *                                                         
 *       * Procedure Origin:                                       
 *       *                                                         
@@ -190,14 +190,14 @@ ENDIF
 *       *                                                         
 *       *********************************************************
 *
-PROCEDURE _74y0rscz7
+PROCEDURE _74y145dgs
 DO FORM\frm_m_user_password.scx
 
 
 
 *       *********************************************************
 *       *                                                         
-*       * _74Y0RSCZ8  ON SELECTION BAR 5 OF POPUP file            
+*       * _74Y145DGT  ON SELECTION BAR 5 OF POPUP file            
 *       *                                                         
 *       * Procedure Origin:                                       
 *       *                                                         
@@ -208,7 +208,7 @@ DO FORM\frm_m_user_password.scx
 *       *                                                         
 *       *********************************************************
 *
-PROCEDURE _74y0rscz8
+PROCEDURE _74y145dgt
 Tanya = MESSAGEBOX('Keluar dari aplikasi (Yes/No)',4+32,'Tanya')
 IF Tanya = 6
 	IF TYPE('konek') = 'N'
@@ -232,7 +232,7 @@ ENDIF
 
 *       *********************************************************
 *       *                                                         
-*       * _74Y0RSCZ9  ON SELECTION BAR 1 OF POPUP setting         
+*       * _74Y145DGU  ON SELECTION BAR 1 OF POPUP setting         
 *       *                                                         
 *       * Procedure Origin:                                       
 *       *                                                         
@@ -243,13 +243,13 @@ ENDIF
 *       *                                                         
 *       *********************************************************
 *
-PROCEDURE _74y0rscz9
+PROCEDURE _74y145dgu
 DO FORM 'form\frm_permit_number.scx'
 
 
 *       *********************************************************
 *       *                                                         
-*       * _74Y0RSCZA  ON SELECTION BAR 2 OF POPUP setting         
+*       * _74Y145DGV  ON SELECTION BAR 2 OF POPUP setting         
 *       *                                                         
 *       * Procedure Origin:                                       
 *       *                                                         
@@ -260,7 +260,7 @@ DO FORM 'form\frm_permit_number.scx'
 *       *                                                         
 *       *********************************************************
 *
-PROCEDURE _74y0rscza
+PROCEDURE _74y145dgv
 IF xLEVEL = 1
 	DO FORM 'form\frm_m_user_view.scx'
 ELSE
@@ -271,7 +271,7 @@ ENDIF
 
 *       *********************************************************
 *       *                                                         
-*       * _74Y0RSCZB  ON SELECTION BAR 1 OF POPUP masterkasb      
+*       * _74Y145DGW  ON SELECTION BAR 1 OF POPUP masterkasb      
 *       *                                                         
 *       * Procedure Origin:                                       
 *       *                                                         
@@ -282,14 +282,14 @@ ENDIF
 *       *                                                         
 *       *********************************************************
 *
-PROCEDURE _74y0rsczb
+PROCEDURE _74y145dgw
 getcba_trid = 3
 DO FORM 'form\frm_cba_view.scx'
 
 
 *       *********************************************************
 *       *                                                         
-*       * _74Y0RSCZC  ON SELECTION BAR 2 OF POPUP masterkasb      
+*       * _74Y145DGX  ON SELECTION BAR 2 OF POPUP masterkasb      
 *       *                                                         
 *       * Procedure Origin:                                       
 *       *                                                         
@@ -300,14 +300,14 @@ DO FORM 'form\frm_cba_view.scx'
 *       *                                                         
 *       *********************************************************
 *
-PROCEDURE _74y0rsczc
+PROCEDURE _74y145dgx
 getcba_trid = 4
 DO FORM 'form\frm_cba_view.scx'
 
 
 *       *********************************************************
 *       *                                                         
-*       * _74Y0RSCZD  ON SELECTION BAR 3 OF POPUP masterkasb      
+*       * _74Y145DGY  ON SELECTION BAR 3 OF POPUP masterkasb      
 *       *                                                         
 *       * Procedure Origin:                                       
 *       *                                                         
@@ -318,5 +318,5 @@ DO FORM 'form\frm_cba_view.scx'
 *       *                                                         
 *       *********************************************************
 *
-PROCEDURE _74y0rsczd
+PROCEDURE _74y145dgy
 DO FORM 'frm_cba_pos_view.scx'

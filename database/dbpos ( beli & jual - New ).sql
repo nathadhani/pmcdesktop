@@ -274,9 +274,9 @@ CREATE TABLE `m_user`  (
 -- ----------------------------
 -- Records of m_user
 -- ----------------------------
-INSERT INTO `m_user` VALUES (1, 3, 'admin', '123', 'Admin', 1, 1, 'Y', 'Y', 'Y', 'Y', 1, '2025-01-19 09:00:00', NULL, NULL, NULL);
-INSERT INTO `m_user` VALUES (2, 3, 'konter', '123', 'Kasir', 2, 1, 'Y', 'Y', 'Y', 'Y', 1, '2025-01-19 09:00:00', NULL, NULL, NULL);
-INSERT INTO `m_user` VALUES (3, 3, 'kasir', '123', 'Kasir', 3, 1, 'Y', 'Y', 'Y', 'Y', 1, '2025-01-19 09:00:00', NULL, NULL, NULL);
+INSERT INTO `m_user` VALUES (1, 1, 'admin', '123', 'Admin', 1, 1, 'Y', 'Y', 'Y', 'Y', 1, '2025-01-19 09:00:00', NULL, NULL, NULL);
+INSERT INTO `m_user` VALUES (2, 1, 'konter', '123', 'Kasir', 2, 1, 'Y', 'Y', 'Y', 'Y', 1, '2025-01-19 09:00:00', NULL, NULL, NULL);
+INSERT INTO `m_user` VALUES (3, 1, 'kasir', '123', 'Kasir', 3, 1, 'Y', 'Y', 'Y', 'Y', 1, '2025-01-19 09:00:00', NULL, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for m_valas
