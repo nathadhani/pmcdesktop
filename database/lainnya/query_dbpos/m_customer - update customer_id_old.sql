@@ -1,0 +1,1 @@
+update m_customer set customer_id_old = id

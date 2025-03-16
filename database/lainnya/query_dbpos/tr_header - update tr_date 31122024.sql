@@ -1,0 +1,1 @@
+UPDATE tr_header set tr_date = '2025-01-01' WHERE tr_date = '2024-12-31'
