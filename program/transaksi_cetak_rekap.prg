@@ -80,35 +80,35 @@ PROCEDURE _header_rekap_title()
 PROCEDURE _header_rekap_title_kolom()
 	*         1         2         3         4         5         6         7         8         9         10        11        12        13            
 	*0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789
-    *           Stok Awal                 Beli                      Jual                      Stok Akhir
-    *   No Curr Qty       Rupiah          Qty       Rupiah          Qty       Rupiah          Qty       Rupiah
-	*   01 MYR  9,999,999 999,999,999,999 9,999,999 999,999,999,999 9,999,999 999,999,999,999 9,999,999 999,999,999,999
+    *           Stok Awal                   Beli                        Jual                        Stok Akhir
+    *   No Curr Qty         Rupiah          Qty         Rupiah          Qty         Rupiah          Qty         Rupiah
+	*   01 MYR  999,999,999 999,999,999,999 999,999,999 999,999,999,999 999,999,999 999,999,999,999 999,999,999 999,999,999,999
  	*----------------------------------------------------------------------------------------------------------------------------------
 	@ 04,04  Say REPLICATE('-',_pjggaris)
 		
 	@ 05,12 Say 'Stok Awal'	
-	@ 05,38 Say 'Beli'		
-	@ 05,64 Say 'Jual'		
-	@ 05,90 Say 'Stok Akhir'		
+	@ 05,40 Say 'Beli'		
+	@ 05,68 Say 'Jual'		
+	@ 05,96 Say 'Stok Akhir'		
 
 	@ 06,04 Say 'No'
 	@ 06,07 Say 'Curr'
 
 	** Stok Awal
 	@ 06,12 Say 'Qty' 
-	@ 06,22 Say 'Rupiah'	
+	@ 06,24 Say 'Rupiah'	
 	
 	** Beli
-	@ 06,38 Say 'Qty'
-	@ 06,48 Say 'Rupiah'
+	@ 06,40 Say 'Qty'
+	@ 06,52 Say 'Rupiah'
 	
 	** Jual
-	@ 06,64 Say 'Qty'
-	@ 06,74 Say 'Rupiah'
+	@ 06,68 Say 'Qty'
+	@ 06,80 Say 'Rupiah'
 	
 	** Stok Akhir
-	@ 06,90 Say 'Qty'
-	@ 06,100 Say 'Rupiah'
+	@ 06,96 Say 'Qty'
+	@ 06,108 Say 'Rupiah'
 	
 	@ 07,04 Say REPLICATE('-',_pjggaris)
 
@@ -117,17 +117,17 @@ PROCEDURE _detail_rekap()
 	@ nRow,04 Say TRANSFORM(_no,"99")
 	@ nRow,07 Say _valascode
 	
-	@ nRow,12 Say TRANSFORM(_stokawal,"9,999,999")									   											
-	@ nRow,22 Say TRANSFORM(_stokawalrp,"999,999,999,999")
+	@ nRow,12 Say TRANSFORM(_stokawal,"999,999,999")									   											
+	@ nRow,24 Say TRANSFORM(_stokawalrp,"999,999,999,999")
 
-	@ nRow,38 Say TRANSFORM(_beli,"9,999,999")									   											
-	@ nRow,48 Say TRANSFORM(_belirp,"999,999,999,999")
+	@ nRow,40 Say TRANSFORM(_beli,"999,999,999")									   											
+	@ nRow,52 Say TRANSFORM(_belirp,"999,999,999,999")
 	
-	@ nRow,64 Say TRANSFORM(_jual,"9,999,999")									   											
-	@ nRow,74 Say TRANSFORM(_jualrp,"999,999,999,999")
+	@ nRow,68 Say TRANSFORM(_jual,"999,999,999")									   											
+	@ nRow,80 Say TRANSFORM(_jualrp,"999,999,999,999")
 	
-	@ nRow,90 Say TRANSFORM(_stokakhir,"9,999,999") 											   											
-	@ nRow,100 Say TRANSFORM(_stokakhirrp,"999,999,999,999")
+	@ nRow,96 Say TRANSFORM(_stokakhir,"999,999,999") 											   											
+	@ nRow,108 Say TRANSFORM(_stokakhirrp,"999,999,999,999")
 	
 *--------------------------------------------------------------------------------------------------------	
 PROCEDURE _footer_rekap()

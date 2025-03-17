@@ -114,16 +114,16 @@ if type('konek') = 'N'
 											copy file &nfile to &nfileto
 										endif 		
 										if file(nfileto)
-											delete file &nfile
-											text to m.lsql noshow
-												update m_customer set customer_code=?xkode 
-												where id=?nid 
-												and company_id=?xcompanyid
-											endtext
-											xx=sqlexec(konek,m.lsql)	
-											if xx <= 0 then 
-												do 'program\cek_error_sql.prg'	
-											endif
+											delete file &nfile											
+										ENDIF
+										text to m.lsql noshow
+											update m_customer set customer_code=?xkode 
+											where id=?nid 
+											and company_id=?xcompanyid
+										endtext
+										xx=sqlexec(konek,m.lsql)	
+										if xx <= 0 then 
+											do 'program\cek_error_sql.prg'	
 										endif
 									endif																													
 									

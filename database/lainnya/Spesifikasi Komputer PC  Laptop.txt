@@ -1,13 +1,13 @@
 Spesifikasi Komputer *PC* / *Laptop* ( Merk Bebas ):
 *PC* :
-- Prosesor Core i3 ( Minimal Gen 11 )
+- Prosesor Core i3 ( Minimal Gen 12 )
 - RAM 8 Giga ( Minimal )
 - SSD 256/512 Giga
 - Monitor 14 / 19 Inc
 - OS Windows 11 (x64)
 atau 
 *Laptop* :
-- Prosesor Core i3 ( Minimal Gen 11 )
+- Prosesor Core i3 ( Minimal Gen 12 )
 - RAM 8 Giga ( Minimal )
 - SSD 256/512 Giga
 - Monitor 14 / 19 Inc 

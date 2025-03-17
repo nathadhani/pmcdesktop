@@ -7,7 +7,7 @@ ELSE
 	versi01 = 'T' && kalo versi baru ganti jadi T
 	
 	PUBLIC ltglexp
-	ltglexp = VAL('20250430') &&VAL('20261231') &&VAL(DTOS(DATE()))
+	ltglexp = VAL('20250531') &&VAL('20261231') &&VAL(DTOS(DATE()))
 	
 	** Versi Lama
 	** ----------------------------------------------------------------------------------	
@@ -20,20 +20,17 @@ ELSE
 	PUBLIC cKey AS Character
 	cKey = '041D-2969' && Acer
 	*cKey = '30D7-5545' && DMA
-	
-	*cKey = 'EC12-BCD3' && INDOCEV Solo ( old )
-	*cKey = 'A46F-E4DC' && INDOCEV Surabaya Atas 12-03-2025 ( new struktur customer_code=12 , tr_number=14 )
-	*cKey = '6CAE-F2CD' && INDOCEV Surabaya Bawah 12-03-2025 ( new struktur customer_code=12 , tr_number=14 )
-	*cKey = '6AFB-64FD' && INDOCEV Citraland 12-03-2025 ( new struktur customer_code=12 , tr_number=14 )
-	*cKey = '066F-95A1' && INDOCEV Cilegon 12-03-2025 ( new struktur customer_code=12 , tr_number=14 )
-	*cKey = 'C002-28B8' && INDOCEV Medan 12-03-2025 ( new struktur customer_code=12 , tr_number=14 )
-
-	*cKey = 'F6F6-288E' && INDOCEV Jogja 15-03-2025
-	
-	*cKey = 'E048-F9C8' && PERMATA VALAS UTAMA 16-03-2025
-	*cKey = '909F-46BB' && INDOCEV Soeta T2 16-03-2025
-	*cKey = '84CD-6381' && INDOCEV Soeta T3 16-03-2025
-
+		
+	*cKey = 'E048-F9C8' && PERMATA VALAS UTAMA 17-03-2025
+	*cKey = '6AFB-64FD' && INDOCEV CITRALAND 17-03-2025
+	*cKey = '066F-95A1' && INDOCEV CILEGON 17-03-2025	
+	*cKey = '909F-46BB' && INDOCEV SOETA T2 17-03-2025
+	*cKey = '84CD-6381' && INDOCEV SOETA T3 17-03-2025
+	*cKey = 'C002-28B8' && INDOCEV MEDAN 17-03-2025	
+	*cKey = 'A46F-E4DC' && INDOCEV SURABAYA ATAS 17-03-2025
+	*cKey = '6CAE-F2CD' && INDOCEV SURABAYA BAWAH 17-03-2025
+	*cKey = 'EC12-BCD3' && INDOCEV SOLO 17-03-2025
+	*cKey = 'F6F6-288E' && INDOCEV JOGJA 17-03-2025
 	** ----------------------------------------------------------------------------------
 	
 	IF ReadSerialDiskDrive('C:\') <> cKey
