@@ -17,14 +17,14 @@ IF LEN(mTAHUN) = 4
 					    shtname = RIGHT('00'+ALLTRIM(STR(m.ia)),2)
 						TEXT TO m.lsql NOSHOW
 							SELECT a.tr_date AS tanggal, 
-							(SELECT COUNT(DISTINCT tr_number) FROM tr_header WHERE tr_header.tr_date = a.tr_date AND tr_header.tr_id=1 AND tr_header.status_id=3) AS jlhbeli,
-							(SELECT SUM(subtotal) FROM tr_detail WHERE tr_detail.tr_date = a.tr_date AND tr_detail.tr_id=1 AND tr_detail.status_id=3) AS valbeli,
-							(SELECT COUNT(DISTINCT tr_number) FROM tr_header WHERE tr_header.tr_date = a.tr_date AND tr_header.tr_id=2 AND tr_header.status_id=3) AS jlhjual,
-							(SELECT SUM(subtotal) FROM tr_detail WHERE tr_detail.tr_date = a.tr_date AND tr_detail.tr_id=2 AND tr_detail.status_id=3) AS valjual
+							(SELECT COUNT(DISTINCT tr_number) FROM tr_header WHERE tr_header.tr_date = a.tr_date AND tr_header.tr_id=1 AND tr_header.status=3) AS jlhbeli,
+							(SELECT SUM(subtotal) FROM tr_detail WHERE tr_detail.tr_date = a.tr_date AND tr_detail.tr_id=1 AND tr_detail.status=3) AS valbeli,
+							(SELECT COUNT(DISTINCT tr_number) FROM tr_header WHERE tr_header.tr_date = a.tr_date AND tr_header.tr_id=2 AND tr_header.status=3) AS jlhjual,
+							(SELECT SUM(subtotal) FROM tr_detail WHERE tr_detail.tr_date = a.tr_date AND tr_detail.tr_id=2 AND tr_detail.status=3) AS valjual
 									    FROM tr_header AS a
 									    WHERE YEAR(a.tr_date)=?mTahun
 									    AND MONTH(a.tr_date)=?mBulan
-									    AND a.status_id = 3
+									    AND a.status = 3
 									    GROUP BY a.tr_date
 									    ORDER BY tanggal ASC 				 
 						ENDTEXT 
@@ -143,25 +143,25 @@ IF LEN(mTAHUN) = 4
 													 WHERE month(tr_header.tr_date) = month(a.tr_date) 
 													 AND year(tr_header.tr_date) = year(a.tr_date)
 													 AND tr_header.tr_id=1 
-													 AND tr_header.status_id=3) AS jlhbeli,
+													 AND tr_header.status=3) AS jlhbeli,
 						(SELECT SUM(subtotal) FROM tr_detail 
 											  WHERE month(tr_detail.tr_date) = month(a.tr_date) 
 											  AND year(tr_detail.tr_date) = year(a.tr_date)
 											  AND tr_detail.tr_id=1 
-											  AND tr_detail.status_id=3) AS valbeli,
+											  AND tr_detail.status=3) AS valbeli,
 						(SELECT COUNT(DISTINCT tr_number) FROM tr_header 
 													 WHERE month(tr_header.tr_date) = month(a.tr_date) 
 													 AND year(tr_header.tr_date) = year(a.tr_date)
 													 AND tr_header.tr_id=2 
-													 AND tr_header.status_id=3) AS jlhjual,
+													 AND tr_header.status=3) AS jlhjual,
 						(SELECT SUM(subtotal) FROM tr_detail 
 											  WHERE month(tr_detail.tr_date) = month(a.tr_date)
 											  AND year(tr_detail.tr_date) = year(a.tr_date) 
 											  AND tr_detail.tr_id=2 
-											  AND tr_detail.status_id=3) AS valjual
+											  AND tr_detail.status=3) AS valjual
 								    FROM tr_header AS a
 								    WHERE YEAR(a.tr_date)=?mTahun
-								    AND a.status_id = 3
+								    AND a.status = 3
 								    GROUP BY month(a.tr_date),YEAR(a.tr_date)
 								    ORDER BY bulan ASC 				 
 					ENDTEXT

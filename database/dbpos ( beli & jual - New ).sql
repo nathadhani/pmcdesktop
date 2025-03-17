@@ -381,7 +381,7 @@ CREATE TABLE `st_valas_avg`  (
   `total_sale` decimal(18, 3) NULL DEFAULT 0.000,
   `total_sale_average` decimal(18, 3) NULL DEFAULT 0.000,
   `st_last_qty` decimal(12, 3) NULL DEFAULT 0.000,
-  `st_last_price` decimal(12, 3) NULL DEFAULT 0.000,
+  `st_last_price` decimal(18, 3) NULL DEFAULT 0.000,
   `st_last_total` decimal(18, 3) NULL DEFAULT 0.000,
   `profit` decimal(18, 3) NULL DEFAULT 0.000,
   `created` datetime NULL DEFAULT NULL,
