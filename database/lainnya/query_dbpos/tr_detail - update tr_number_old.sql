@@ -1,1 +1,0 @@
-update tr_detail set tr_number_old = tr_number

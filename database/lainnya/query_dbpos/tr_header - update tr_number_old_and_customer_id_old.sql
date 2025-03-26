@@ -1,1 +1,0 @@
-update tr_header set tr_number_old = tr_number, customer_id_old = customer_id

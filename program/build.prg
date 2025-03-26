@@ -3,23 +3,23 @@ IF .NOT. AppMutex()
 	QUIT
 	CLEAR EVENTS
 ELSE
+	PUBLIC cKey AS Character
 	PUBLIC versi01 AS Character	
-	versi01 = 'T' && kalo versi baru ganti jadi T
+	versi01 = 'Y' && kalo versi baru ganti jadi T
 	
 	PUBLIC ltglexp
 	ltglexp = VAL('20250531') &&VAL('20261231') &&VAL(DTOS(DATE()))
 	
 	** Versi Lama
 	** ----------------------------------------------------------------------------------	
-	*cKey = '90D9-B073' && NIRWANA VALUTA WIJAYA ( Erwan ) 16-03-2025
+	*cKey = '90D9-B073' && NIRWANA VALUTA WIJAYA ( ERWAN WIJAYA ) 26-03-2025
 	** ----------------------------------------------------------------------------------
 
 	** ----------------------------------------------------------------------------------
 	** Versi Baru
-	** ----------------------------------------------------------------------------------
-	PUBLIC cKey AS Character
-	cKey = '041D-2969' && Acer
-	*cKey = '30D7-5545' && DMA
+	** ----------------------------------------------------------------------------------	
+	*cKey = '041D-2969' && Acer
+	cKey = '30D7-5545' && DMA
 		
 	*cKey = 'E048-F9C8' && PERMATA VALAS UTAMA 17-03-2025
 	*cKey = '6AFB-64FD' && INDOCEV CITRALAND 17-03-2025
