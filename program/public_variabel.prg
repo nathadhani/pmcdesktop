@@ -88,12 +88,11 @@ _namapelanggan  = ''
 
 *--------------------------------------------------------------------------------------
 ** variable transaction kas / bank
-public getcba_trid, getcba_id as number
-getcba_trid = 0
-getcba_id = 0
+public getcb_id as number
+getcb_id = 0
 
-public getcba_pos_id as number
-getcba_pos_id = 0
+public getcb_pos_id as number
+getcb_pos_id = 0
 
 ** end variable transaction kas / bank
 *--------------------------------------------------------------------------------------
