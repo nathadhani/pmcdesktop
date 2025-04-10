@@ -1,5 +1,5 @@
 public xcompanyid
-xcompanyid = 0
+xcompanyid = 1
 
 *--------------------------------------------------------------------------------------
 ** variable user
@@ -25,8 +25,8 @@ xidkasir = 0
 xnmkasir = ''
 
 public xinsert, xupdate, xdelete, xcancel
-xinsert = ''
-xupdate = ''	
+xinsert = 'Y'
+xupdate = 'Y'	
 xdelete = ''	
 xcancel = ''	
 ** end variable user
@@ -35,7 +35,7 @@ xcancel = ''
 *--------------------------------------------------------------------------------------
 ** variable transaction buy / sell
 public lkonter
-lkonter  = .f.
+lkonter = .f.
 
 public lclosing
 lclosing = .f.		
