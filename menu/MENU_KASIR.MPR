@@ -1,6 +1,6 @@
 *       *********************************************************
 *       *                                                         
-*       * 04/11/25           MENU_KASIR.MPR             01:08:16  
+*       * 11/04/2025          MENU_KASIR.MPR            16:14:25  
 *       *                                                         
 *       *********************************************************
 *       *                                                         
@@ -123,34 +123,34 @@ ENDIF
 
 DEFINE MENU (m.cMenuName) IN (m.oFormRef.Name) BAR
 
-DEFINE PAD _75o02fsir OF (m.cMenuName) PROMPT "File" COLOR SCHEME 3 ;
+DEFINE PAD _75o0yt4fs OF (m.cMenuName) PROMPT "File" COLOR SCHEME 3 ;
 	KEY ALT+F, "" ;
 	SKIP FOR lmenuof
-DEFINE PAD _75o02fsis OF (m.cMenuName) PROMPT "Transaksi" COLOR SCHEME 3 ;
+DEFINE PAD _75o0yt4g0 OF (m.cMenuName) PROMPT "Transaksi" COLOR SCHEME 3 ;
 	KEY ALT+T, ""
-ON PAD _75o02fsir OF (m.cMenuName) ACTIVATE POPUP (a_menupops[1])
-ON PAD _75o02fsis OF (m.cMenuName) ACTIVATE POPUP (a_menupops[2])
+ON PAD _75o0yt4fs OF (m.cMenuName) ACTIVATE POPUP (a_menupops[1])
+ON PAD _75o0yt4g0 OF (m.cMenuName) ACTIVATE POPUP (a_menupops[2])
 
 DEFINE POPUP (a_menupops[1]) MARGIN RELATIVE SHADOW COLOR SCHEME 4
 DEFINE BAR 1 OF (a_menupops[1]) PROMPT "Ganti Password"
 DEFINE BAR 2 OF (a_menupops[1]) PROMPT "Keluar"
 ON SELECTION BAR 1 OF (a_menupops[1]) ;
-	DO _75o02fsit ;
-	IN LOCFILE("PMCDESKTOP\MENU\MENU_KASIR" ,"MPX;MPR|FXP;PRG" ,"WHERE is MENU_KASIR?")
+	DO _75o0yt4g1 ;
+	IN LOCFILE("\PMCDESKTOP\MENU\MENU_KASIR" ,"MPX;MPR|FXP;PRG" ,"WHERE is MENU_KASIR?")
 ON SELECTION BAR 2 OF (a_menupops[1]) ;
-	DO _75o02fsiu ;
-	IN LOCFILE("PMCDESKTOP\MENU\MENU_KASIR" ,"MPX;MPR|FXP;PRG" ,"WHERE is MENU_KASIR?")
+	DO _75o0yt4g2 ;
+	IN LOCFILE("\PMCDESKTOP\MENU\MENU_KASIR" ,"MPX;MPR|FXP;PRG" ,"WHERE is MENU_KASIR?")
 
 DEFINE POPUP (a_menupops[2]) MARGIN RELATIVE SHADOW COLOR SCHEME 4
 DEFINE BAR 1 OF (a_menupops[2]) PROMPT "Transaksi"
 DEFINE BAR 2 OF (a_menupops[2]) PROMPT "\-"
 DEFINE BAR 3 OF (a_menupops[2]) PROMPT "Saldo Akhir"
 ON SELECTION BAR 1 OF (a_menupops[2]) ;
-	DO _75o02fsiv ;
-	IN LOCFILE("PMCDESKTOP\MENU\MENU_KASIR" ,"MPX;MPR|FXP;PRG" ,"WHERE is MENU_KASIR?")
+	DO _75o0yt4g3 ;
+	IN LOCFILE("\PMCDESKTOP\MENU\MENU_KASIR" ,"MPX;MPR|FXP;PRG" ,"WHERE is MENU_KASIR?")
 ON SELECTION BAR 3 OF (a_menupops[2]) ;
-	DO _75o02fsiw ;
-	IN LOCFILE("PMCDESKTOP\MENU\MENU_KASIR" ,"MPX;MPR|FXP;PRG" ,"WHERE is MENU_KASIR?")
+	DO _75o0yt4g4 ;
+	IN LOCFILE("\PMCDESKTOP\MENU\MENU_KASIR" ,"MPX;MPR|FXP;PRG" ,"WHERE is MENU_KASIR?")
 
 ACTIVATE MENU (m.cMenuName) NOWAIT
 
@@ -162,7 +162,7 @@ ENDIF
 
 *       *********************************************************
 *       *                                                         
-*       * _75O02FSIT  ON SELECTION BAR 1 OF POPUP file            
+*       * _75O0YT4G1  ON SELECTION BAR 1 OF POPUP file            
 *       *                                                         
 *       * Procedure Origin:                                       
 *       *                                                         
@@ -173,14 +173,14 @@ ENDIF
 *       *                                                         
 *       *********************************************************
 *
-PROCEDURE _75o02fsit
+PROCEDURE _75o0yt4g1
 DO FORM\frm_m_user_password.scx
 
 
 
 *       *********************************************************
 *       *                                                         
-*       * _75O02FSIU  ON SELECTION BAR 2 OF POPUP file            
+*       * _75O0YT4G2  ON SELECTION BAR 2 OF POPUP file            
 *       *                                                         
 *       * Procedure Origin:                                       
 *       *                                                         
@@ -191,7 +191,7 @@ DO FORM\frm_m_user_password.scx
 *       *                                                         
 *       *********************************************************
 *
-PROCEDURE _75o02fsiu
+PROCEDURE _75o0yt4g2
 Tanya = MESSAGEBOX('Keluar dari aplikasi (Yes/No)',4+32,'Tanya')
 IF Tanya = 6
 	IF TYPE('konek') = 'N'
@@ -215,7 +215,7 @@ ENDIF
 
 *       *********************************************************
 *       *                                                         
-*       * _75O02FSIV  ON SELECTION BAR 1 OF POPUP transaksi       
+*       * _75O0YT4G3  ON SELECTION BAR 1 OF POPUP transaksi       
 *       *                                                         
 *       * Procedure Origin:                                       
 *       *                                                         
@@ -226,13 +226,13 @@ ENDIF
 *       *                                                         
 *       *********************************************************
 *
-PROCEDURE _75o02fsiv
+PROCEDURE _75o0yt4g3
 DO FORM 'form\frm_cb_transaksi.scx'
 
 
 *       *********************************************************
 *       *                                                         
-*       * _75O02FSIW  ON SELECTION BAR 3 OF POPUP transaksi       
+*       * _75O0YT4G4  ON SELECTION BAR 3 OF POPUP transaksi       
 *       *                                                         
 *       * Procedure Origin:                                       
 *       *                                                         
@@ -243,5 +243,5 @@ DO FORM 'form\frm_cb_transaksi.scx'
 *       *                                                         
 *       *********************************************************
 *
-PROCEDURE _75o02fsiw
+PROCEDURE _75o0yt4g4
 DO FORM 'frm_cb_saldo.scx'

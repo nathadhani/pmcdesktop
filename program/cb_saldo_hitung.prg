@@ -1,14 +1,14 @@
 IF TYPE('KONEK') = 'N'
 	IF KONEK = 1		
 		LPROSES = .T.
-		xx=SQLEXEC(KONEK,'SELECT MIN(cbas_date) AS cbas_date FROM cba_saldo WHERE company_id = ?xcompanyid','MINTGL')
+		xx=SQLEXEC(KONEK,'SELECT MIN(cbs_date) AS cbs_date FROM cb_saldo WHERE company_id = ?xcompanyid','MINTGL')
 		IF xx <= 0 THEN
 		   DO 'program\cek_error_sql.prg'	
 		ENDIF	
 		IF USED('MINTGL')
 			SELECT MINTGL
 			IF RECCOUNT() > 0
-				_MINTGL = MINTGL->cbas_date
+				_MINTGL = MINTGL->cbs_date
 				IF dTgl < _MINTGL
 					LPROSES = .F.
 				ENDIF
@@ -16,14 +16,14 @@ IF TYPE('KONEK') = 'N'
 		ENDIF		
 		IF LPROSES = .T.
 			**-- Delete
-			xx=SQLEXEC(KONEK,'DELETE FROM cba_saldo WHERE cbas_date=?MTGL AND company_id = ?xcompanyid')
+			xx=SQLEXEC(KONEK,'DELETE FROM cb_saldo WHERE cbs_date=?MTGL AND company_id = ?xcompanyid')
 			DO 'program\cek_error_sql_crud.prg'
 			
 			**-- Get Transaksi Kas & Bank
 			DO GET_TRANSAKSI_KAS_BANK
 			
 			**-- Update
-			xx=SQLEXEC(KONEK,'UPDATE cba_saldo SET UPDATED = ?DATETIME(), UPDATEDBY = ?XIDUSER WHERE cbas_date=?MTGL AND company_id = ?xcompanyid')
+			xx=SQLEXEC(KONEK,'UPDATE cb_saldo SET UPDATED = ?DATETIME(), UPDATEDBY = ?XIDUSER WHERE cbs_date=?MTGL AND company_id = ?xcompanyid')
 			DO 'program\cek_error_sql_crud.prg'
 		ENDIF	
 		WAIT CLEAR 
@@ -36,7 +36,7 @@ PROCEDURE GET_TRANSAKSI_KAS_BANK()
 	** TEMPLATE
 	** ---------------------------------------------------------------------------
 	TEXT TO M.LSQL NOSHOW
-		SELECT ID AS cba_id FROM cba ORDER BY ID ASC
+		SELECT ID AS cb_id FROM cb ORDER BY ID ASC
 	ENDTEXT
 	xx=SQLEXEC(KONEK,M.LSQL,"TEMPLATE")		
 	IF xx <= 0 THEN
@@ -50,16 +50,16 @@ PROCEDURE GET_TRANSAKSI_KAS_BANK()
 			NREK = 0
 			_RECOUNT = RECCOUNT()
 			DO WHILE .NOT. EOF()						
-				_CBA_ID = TEMPLATE->cba_id
+				_CB_ID = TEMPLATE->cb_id
 			
 			   	** TAMBAH DATA
 				** ---------------------------------------------------------------------------------------------------------------------------		
 				TEXT TO M.LSQL NOSHOW
-					SELECT cba_id, cbas_date
-					FROM cba_saldo 
+					SELECT cb_id, cbs_date
+					FROM cb_saldo 
 					WHERE company_id = ?xcompanyid 
-					AND cba_id = ?_CBA_ID
-					AND cbas_date = ?MTGL
+					AND cb_id = ?_CB_ID
+					AND cbs_date = ?MTGL
 				ENDTEXT
 				xx=SQLEXEC(KONEK,M.LSQL,"CEK")
 				IF xx <= 0 THEN
@@ -69,7 +69,7 @@ PROCEDURE GET_TRANSAKSI_KAS_BANK()
 					SELECT CEK
 					IF RECCOUNT() <= 0
 						TEXT TO M.LSQL NOSHOW
-							SELECT MAX(ID) AS MAXID FROM cba_saldo WHERE company_id = company_id = ?xcompanyid AND cbas_date = ?MTGL
+							SELECT MAX(ID) AS MAXID FROM cb_saldo LIMIT 1
 						ENDTEXT
 						xx=SQLEXEC(KONEK,M.LSQL,"NMAX")			
 						IF xx <= 0 THEN
@@ -84,19 +84,19 @@ PROCEDURE GET_TRANSAKSI_KAS_BANK()
 						ENDIF																
 
 						TEXT TO M.LSQL NOSHOW
-							INSERT INTO cba_saldo(ID,
+							INSERT INTO cb_saldo(ID,
 												  company_id,
-												  cba_id,
-  												  cbas_date,
-												  cbas_in,
-												  cbas_out,
-												  cbas_saldo,
+												  cb_id,
+  												  cbs_date,
+												  cbs_in,
+												  cbs_out,
+												  cbs_saldo,
 												  status,
 												  CREATED,
 												  CREATEDBY)
 							VALUES(?_ID,
 								   ?xcompanyid,
-								   ?_CBA_ID,
+								   ?_CB_ID,
    								   ?MTGL,
 								   0,
 								   0,
@@ -119,21 +119,19 @@ PROCEDURE GET_TRANSAKSI_KAS_BANK()
 	** TRANSAKASI KAS & BANK
 	** ---------------------------------------------------------------------------		
 	TEXT TO M.LSQL NOSHOW
-		SELECT cba_td.cba_tr_date,
-			   cba_td.cba_id,
-			   (
-			   	SELECT CONCAT(cba_code,' - ',cba_name) AS cba_name 
-			   	FROM cba 
-			   	WHERE cba.id = cba_td.cba_id
-			   	GROUP BY cba.cba_code, cba.cba_name
-			    ) AS cba_name,			   
-			   SUM(cba_td.amount_in) AS amount_in,
-			   SUM(cba_td.amount_out) AS amount_out
-		FROM cba_td
-		WHERE company_id = ?xcompanyid 
-		AND cba_td.cba_tr_date = ?MTGL
-		AND cba_td.status = 3
-		GROUP BY cba_td.cba_tr_date, cba_td.cba_id
+		SELECT cb_header.tr_date,
+			   cb_header.cb_id,
+			   cb.cb_name,			   
+			   SUM(IF(cb_pos.cb_pos_in_out = 'I', cb_detail.amount,0)) AS masuk,
+			   SUM(IF(cb_pos.cb_pos_in_out = 'O', cb_detail.amount,0)) AS keluar
+		FROM cb_detail
+		JOIN cb_header ON cb_detail.header_id = cb_header.id
+		JOIN cb ON cb_header.cb_id = cb.id
+		JOIN cb_pos ON cb_header.cb_pos_id = cb_pos.id
+		WHERE cb_header.company_id = ?xcompanyid 
+		AND cb_header.tr_date = ?MTGL
+		AND cb_detail.status = 3
+		GROUP BY cb_header.tr_date, cb_header.cb_id
 	ENDTEXT 
 	xx=SQLEXEC(KONEK,M.LSQL,'TMP')
 	IF xx <= 0 THEN
@@ -148,21 +146,21 @@ PROCEDURE GET_TRANSAKSI_KAS_BANK()
 			NREK = 0
 			_RECOUNT = RECCOUNT()
 			DO WHILE .NOT. EOF()					
-				_CBA_ID   = TMP->cba_id
-				_CBA_NAME = ALLTRIM(TMP->cba_name)
-				_amount_in = TMP->amount_in
-				_amount_out = TMP->amount_out
+				_CB_ID   = TMP->cb_id
+				_CB_NAME = ALLTRIM(TMP->cb_name)
+				_masuk = TMP->masuk
+				_keluar = TMP->keluar
 				
 				nrek = nrek + 1
-				wait window nowait 'transaksi kas & bank : ' + _CBA_NAME + ' | tanggal : ' + cTGL + ' | reccord :' +	alltrim(str(nrek)) + ' / ' + alltrim(str(_recount))
+				wait window nowait 'transaksi kas & bank : ' + _CB_NAME + ' | tanggal : ' + cTGL + ' | reccord :' +	alltrim(str(nrek)) + ' / ' + alltrim(str(_recount))
 				
-				IF _amount_in = 0 AND _amount_out = 0
+				IF _masuk = 0 AND _keluar = 0
 					SKIP 
 					LOOP 
 				ENDIF 									   
 							
 				TEXT TO M.LSQL NOSHOW
-					UPDATE cba_saldo SET cbas_in = ?_amount_in, cbas_out = ?_amount_out WHERE company_id = ?xcompanyid AND cba_id = ?_CBA_ID AND cbas_date = ?MTGL
+					UPDATE cb_saldo SET cbs_in = ?_masuk, cbs_out = ?_keluar WHERE company_id = ?xcompanyid AND cb_id = ?_CB_ID AND cbs_date = ?MTGL
 				ENDTEXT
 				xx=SQLEXEC(KONEK,M.LSQL)
 				DO 'program\cek_error_sql_crud.prg'
@@ -178,9 +176,9 @@ PROCEDURE GET_TRANSAKSI_KAS_BANK()
 	** SALDO AKHIR 
 	** ------------------------------------------------------------------------------------------------------------------------------------------ 	
 	TEXT TO M.LSQL NOSHOW
-		SELECT ID AS CBA_ID,
-			   CONCAT(cba_code,' - ',cba_name) AS cba_name
- 			   FROM cba
+		SELECT ID AS CB_ID,
+			   cb_name
+ 			   FROM cb
 			   ORDER BY ID ASC
 	ENDTEXT
 	xx=SQLEXEC(KONEK,M.LSQL,"TMPSALDO")		
@@ -194,24 +192,24 @@ PROCEDURE GET_TRANSAKSI_KAS_BANK()
 			NREK = 0
 			_RECOUNT = RECCOUNT()
 			DO WHILE .NOT. EOF()						
-				_CBA_ID   = TMPSALDO->CBA_ID
-				_CBA_NAME = ALLTRIM(TMPSALDO->cba_name)
+				_CB_ID   = TMPSALDO->CB_ID
+				_CB_NAME = ALLTRIM(TMPSALDO->cb_name)
 				
 				nrek = nrek + 1
-				wait window nowait 'saldo akhir kas & bank : ' + _CBA_NAME + ' | tanggal : ' + cTGL + ' | reccord :' +	alltrim(str(nrek)) + ' / ' + alltrim(str(_recount))
+				wait window nowait 'saldo akhir kas & bank : ' + _CB_NAME + ' | tanggal : ' + cTGL + ' | reccord :' +	alltrim(str(nrek)) + ' / ' + alltrim(str(_recount))
 				
 								   
 				** UPDATE JLH SALDO AKHIR
 				** ---------------------------------------------------------------------------------------------------------------------------		
 				TEXT TO M.LSQL NOSHOW
-					SELECT cbas_saldo FROM cba_saldo
+					SELECT cbs_saldo FROM cb_saldo
 					WHERE company_id = ?xcompanyid 
-					AND cba_id = ?_CBA_ID
-					AND cbas_date = (
-									  SELECT MAX(cbas_date) FROM cba_saldo 
+					AND cb_id = ?_CB_ID
+					AND cbs_date = (
+									  SELECT MAX(cbs_date) FROM cb_saldo 
 									  WHERE company_id = ?xcompanyid 
-									  AND cbas_date < ?MTGL 
-									  AND cba_id = ?_CBA_ID
+									  AND cbs_date < ?MTGL 
+									  AND cb_id = ?_CB_ID
 									)
 				ENDTEXT 
 				xx=SQLEXEC(KONEK,M.LSQL,'LASTSALDO')
@@ -219,15 +217,15 @@ PROCEDURE GET_TRANSAKSI_KAS_BANK()
 				   DO 'program\cek_error_sql.prg'	
 				ENDIF						
 				IF USED('LASTSALDO')
-					IF .NOT. ISNULL(LASTSALDO->cbas_saldo)							
-						_SALDO = LASTSALDO->cbas_saldo					
+					IF .NOT. ISNULL(LASTSALDO->cbs_saldo)						
+						_SALDO = LASTSALDO->cbs_saldo					
 					ENDIF
 					USE IN LASTSALDO
 					TEXT TO M.LSQL NOSHOW
-						UPDATE cba_saldo SET cbas_saldo = (?_SALDO + cbas_in) - cbas_out
+						UPDATE cb_saldo SET cbs_saldo = (?_SALDO + cbs_in) - cbs_out
 						WHERE company_id = ?xcompanyid 
-						AND cba_id = ?_CBA_ID
-						AND cbas_date = ?MTGL
+						AND cb_id = ?_CB_ID
+						AND cbs_date = ?MTGL
 					ENDTEXT 
 					xx=SQLEXEC(KONEK,M.LSQL)
 					DO 'program\cek_error_sql_crud.prg'	

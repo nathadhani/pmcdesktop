@@ -57,6 +57,7 @@ IF LEN(iTAHUN) = 4
 								WITH oExcel.WorkSheets(1)
 									.Activate()		
 									.Range("A1:H1").Interior.ColorIndex = 37
+									.Range("A1:H1").Font.Bold = .T.
 									.Range("A1:H1").HorizontalAlignment = 3
 									.UsedRange.EntireColumn.VerticalAlignment = 2		
 									.UsedRange.EntireColumn.Font.Size   = 10

@@ -11,11 +11,210 @@
  Target Server Version : 80030
  File Encoding         : 65001
 
- Date: 13/03/2025 14:45:23
+ Date: 11/04/2025 16:43:46
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for cb
+-- ----------------------------
+DROP TABLE IF EXISTS `cb`;
+CREATE TABLE `cb`  (
+  `id` smallint NOT NULL,
+  `company_id` bigint NOT NULL,
+  `tr_id` smallint NOT NULL,
+  `cb_code` varchar(8) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `cb_name` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `description` varchar(150) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `status` smallint NOT NULL,
+  `created` datetime NULL DEFAULT NULL,
+  `updated` datetime NULL DEFAULT NULL,
+  `createdby` smallint NULL DEFAULT NULL,
+  `updatedby` smallint NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = COMPACT;
+
+-- ----------------------------
+-- Records of cb
+-- ----------------------------
+INSERT INTO `cb` VALUES (1, 1, 3, '01030001', 'Kas', '', 1, '2025-03-08 22:28:04', '2025-03-22 09:12:01', 1, 3);
+INSERT INTO `cb` VALUES (2, 1, 4, '01040001', 'Bank', ' ', 1, '2025-03-08 22:28:04', '2025-04-05 11:14:45', 1, 3);
+
+-- ----------------------------
+-- Table structure for cb_detail
+-- ----------------------------
+DROP TABLE IF EXISTS `cb_detail`;
+CREATE TABLE `cb_detail`  (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `header_id` bigint NOT NULL,
+  `description` varchar(150) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `amount` decimal(18, 2) NOT NULL DEFAULT 0.00,
+  `status` smallint NOT NULL,
+  `created` datetime NULL DEFAULT NULL,
+  `updated` datetime NULL DEFAULT NULL,
+  `createdby` smallint NULL DEFAULT NULL,
+  `updatedby` smallint NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = COMPACT;
+
+-- ----------------------------
+-- Records of cb_detail
+-- ----------------------------
+INSERT INTO `cb_detail` VALUES (1, 1, 'SALDO AWAL KAS', 100000000.00, 3, '2025-04-11 11:26:30', NULL, 3, NULL);
+INSERT INTO `cb_detail` VALUES (2, 2, 'TARIK TUNAI', 50000000.00, 4, '2025-04-11 11:36:29', NULL, 3, NULL);
+INSERT INTO `cb_detail` VALUES (3, 3, 'PEMBELIAN VALAS', 15000000.00, 3, '2025-04-11 11:44:25', NULL, 3, NULL);
+INSERT INTO `cb_detail` VALUES (4, 4, 'TARIK TUNAI', 3000000.00, 3, '2025-04-11 11:49:59', NULL, 3, NULL);
+
+-- ----------------------------
+-- Table structure for cb_header
+-- ----------------------------
+DROP TABLE IF EXISTS `cb_header`;
+CREATE TABLE `cb_header`  (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `company_id` bigint NOT NULL,
+  `cb_id` smallint NOT NULL,
+  `cb_pos_id` smallint NOT NULL,
+  `tr_date` date NOT NULL,
+  `tr_number` varchar(16) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `reason_cancel` varchar(150) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL,
+  `buysell_id` bigint NULL DEFAULT NULL,
+  `buysell_payment_type` smallint NULL DEFAULT NULL,
+  `status` smallint NOT NULL,
+  `created` datetime NULL DEFAULT NULL,
+  `updated` datetime NULL DEFAULT NULL,
+  `createdby` smallint NULL DEFAULT NULL,
+  `updatedby` smallint NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = COMPACT;
+
+-- ----------------------------
+-- Records of cb_header
+-- ----------------------------
+INSERT INTO `cb_header` VALUES (1, 1, 1, 1, '2025-04-11', '2504110101010001', NULL, NULL, NULL, 3, '2025-04-11 11:26:30', NULL, 3, NULL);
+INSERT INTO `cb_header` VALUES (2, 1, 1, 2, '2025-04-11', '2504110101020001', 'Salah Input', NULL, NULL, 4, '2025-04-11 11:36:29', '2025-04-11 11:41:12', 3, 3);
+INSERT INTO `cb_header` VALUES (3, 1, 1, 3, '2025-04-11', '2504110101030001', NULL, NULL, NULL, 4, '2025-04-11 11:44:25', '2025-04-11 11:44:28', 3, NULL);
+INSERT INTO `cb_header` VALUES (4, 1, 1, 2, '2025-04-11', '2504110101020002', 'Salah Input', NULL, NULL, 4, '2025-04-11 11:49:59', '2025-04-11 11:50:09', 3, NULL);
+
+-- ----------------------------
+-- Table structure for cb_pos
+-- ----------------------------
+DROP TABLE IF EXISTS `cb_pos`;
+CREATE TABLE `cb_pos`  (
+  `id` smallint NOT NULL,
+  `cb_id` smallint NOT NULL,
+  `cb_pos_code` varchar(6) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `cb_pos_name` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `cb_pos_in_out` char(1) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL,
+  `buysell_tr_id` smallint NULL DEFAULT NULL,
+  `status` smallint NOT NULL,
+  `created` datetime NULL DEFAULT NULL,
+  `updated` datetime NULL DEFAULT NULL,
+  `createdby` smallint NULL DEFAULT NULL,
+  `updatedby` smallint NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = COMPACT;
+
+-- ----------------------------
+-- Records of cb_pos
+-- ----------------------------
+INSERT INTO `cb_pos` VALUES (1, 1, 'MP0001', 'Modal Kas', 'I', NULL, 1, '2025-03-08 22:28:04', '2025-03-25 13:27:21', 3, 3);
+INSERT INTO `cb_pos` VALUES (2, 1, 'MP0002', 'Penerimaan Kas', 'I', NULL, 1, '2025-03-08 22:28:04', NULL, 3, NULL);
+INSERT INTO `cb_pos` VALUES (3, 1, 'MP0003', 'Pengeluaran Kas', 'O', NULL, 1, '2025-03-08 22:28:04', NULL, 3, NULL);
+INSERT INTO `cb_pos` VALUES (4, 1, 'MP0004', 'Pembelian Valas', 'O', 1, 1, '2025-03-08 22:28:04', NULL, 3, NULL);
+INSERT INTO `cb_pos` VALUES (5, 1, 'MP0005', 'Penjualan Valas', 'I', 2, 1, '2025-03-08 22:28:04', NULL, 3, NULL);
+INSERT INTO `cb_pos` VALUES (6, 2, 'MP0008', 'Modal Bank', 'I', NULL, 1, '2025-03-08 22:28:04', NULL, 3, NULL);
+INSERT INTO `cb_pos` VALUES (7, 2, 'MP0009', 'Penerimaan Bank', 'I', NULL, 1, '2025-03-08 22:28:04', NULL, 3, NULL);
+INSERT INTO `cb_pos` VALUES (8, 2, 'MP0010', 'Pengeluaran Bank', 'O', NULL, 1, '2025-03-08 22:28:04', NULL, 3, NULL);
+INSERT INTO `cb_pos` VALUES (9, 2, 'MP0011', 'Pembelian Valas', 'O', 1, 1, '2025-03-08 22:28:04', NULL, 3, NULL);
+INSERT INTO `cb_pos` VALUES (10, 2, 'MP0012', 'Penjualan Valas', 'I', 2, 1, '2025-03-08 22:28:04', NULL, 3, NULL);
+
+-- ----------------------------
+-- Table structure for cb_saldo
+-- ----------------------------
+DROP TABLE IF EXISTS `cb_saldo`;
+CREATE TABLE `cb_saldo`  (
+  `id` bigint NOT NULL,
+  `company_id` smallint NOT NULL,
+  `cb_id` smallint NOT NULL,
+  `cbs_date` date NOT NULL,
+  `cbs_year` decimal(4, 0) NULL DEFAULT NULL,
+  `cbs_month` decimal(2, 0) NULL DEFAULT NULL,
+  `cbs_in` decimal(18, 2) NULL DEFAULT 0.00,
+  `cbs_out` decimal(18, 2) NULL DEFAULT 0.00,
+  `cbs_saldo` decimal(18, 2) NULL DEFAULT 0.00,
+  `status` smallint NOT NULL,
+  `created` datetime NULL DEFAULT NULL,
+  `updated` datetime NULL DEFAULT NULL,
+  `createdby` smallint NULL DEFAULT NULL,
+  `updatedby` smallint NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 481 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = COMPACT;
+
+-- ----------------------------
+-- Records of cb_saldo
+-- ----------------------------
+INSERT INTO `cb_saldo` VALUES (61, 1, 1, '2025-04-01', NULL, NULL, 0.00, 0.00, 0.00, 3, '2025-04-11 11:41:23', '2025-04-11 11:41:23', 3, 3);
+INSERT INTO `cb_saldo` VALUES (62, 1, 2, '2025-04-01', NULL, NULL, 0.00, 0.00, 0.00, 3, '2025-04-11 11:41:23', '2025-04-11 11:41:23', 3, 3);
+INSERT INTO `cb_saldo` VALUES (63, 1, 1, '2025-04-02', NULL, NULL, 0.00, 0.00, 0.00, 3, '2025-04-11 11:41:23', '2025-04-11 11:41:23', 3, 3);
+INSERT INTO `cb_saldo` VALUES (64, 1, 2, '2025-04-02', NULL, NULL, 0.00, 0.00, 0.00, 3, '2025-04-11 11:41:23', '2025-04-11 11:41:23', 3, 3);
+INSERT INTO `cb_saldo` VALUES (65, 1, 1, '2025-04-03', NULL, NULL, 0.00, 0.00, 0.00, 3, '2025-04-11 11:41:23', '2025-04-11 11:41:23', 3, 3);
+INSERT INTO `cb_saldo` VALUES (66, 1, 2, '2025-04-03', NULL, NULL, 0.00, 0.00, 0.00, 3, '2025-04-11 11:41:23', '2025-04-11 11:41:23', 3, 3);
+INSERT INTO `cb_saldo` VALUES (67, 1, 1, '2025-04-04', NULL, NULL, 0.00, 0.00, 0.00, 3, '2025-04-11 11:41:23', '2025-04-11 11:41:23', 3, 3);
+INSERT INTO `cb_saldo` VALUES (68, 1, 2, '2025-04-04', NULL, NULL, 0.00, 0.00, 0.00, 3, '2025-04-11 11:41:23', '2025-04-11 11:41:23', 3, 3);
+INSERT INTO `cb_saldo` VALUES (69, 1, 1, '2025-04-05', NULL, NULL, 0.00, 0.00, 0.00, 3, '2025-04-11 11:41:23', '2025-04-11 11:41:23', 3, 3);
+INSERT INTO `cb_saldo` VALUES (70, 1, 2, '2025-04-05', NULL, NULL, 0.00, 0.00, 0.00, 3, '2025-04-11 11:41:23', '2025-04-11 11:41:23', 3, 3);
+INSERT INTO `cb_saldo` VALUES (71, 1, 1, '2025-04-06', NULL, NULL, 0.00, 0.00, 0.00, 3, '2025-04-11 11:41:23', '2025-04-11 11:41:23', 3, 3);
+INSERT INTO `cb_saldo` VALUES (72, 1, 2, '2025-04-06', NULL, NULL, 0.00, 0.00, 0.00, 3, '2025-04-11 11:41:23', '2025-04-11 11:41:23', 3, 3);
+INSERT INTO `cb_saldo` VALUES (73, 1, 1, '2025-04-07', NULL, NULL, 0.00, 0.00, 0.00, 3, '2025-04-11 11:41:23', '2025-04-11 11:41:23', 3, 3);
+INSERT INTO `cb_saldo` VALUES (74, 1, 2, '2025-04-07', NULL, NULL, 0.00, 0.00, 0.00, 3, '2025-04-11 11:41:23', '2025-04-11 11:41:23', 3, 3);
+INSERT INTO `cb_saldo` VALUES (75, 1, 1, '2025-04-08', NULL, NULL, 0.00, 0.00, 0.00, 3, '2025-04-11 11:41:23', '2025-04-11 11:41:23', 3, 3);
+INSERT INTO `cb_saldo` VALUES (76, 1, 2, '2025-04-08', NULL, NULL, 0.00, 0.00, 0.00, 3, '2025-04-11 11:41:23', '2025-04-11 11:41:23', 3, 3);
+INSERT INTO `cb_saldo` VALUES (77, 1, 1, '2025-04-09', NULL, NULL, 0.00, 0.00, 0.00, 3, '2025-04-11 11:41:24', '2025-04-11 11:41:24', 3, 3);
+INSERT INTO `cb_saldo` VALUES (78, 1, 2, '2025-04-09', NULL, NULL, 0.00, 0.00, 0.00, 3, '2025-04-11 11:41:24', '2025-04-11 11:41:24', 3, 3);
+INSERT INTO `cb_saldo` VALUES (79, 1, 1, '2025-04-10', NULL, NULL, 0.00, 0.00, 0.00, 3, '2025-04-11 11:41:24', '2025-04-11 11:41:24', 3, 3);
+INSERT INTO `cb_saldo` VALUES (80, 1, 2, '2025-04-10', NULL, NULL, 0.00, 0.00, 0.00, 3, '2025-04-11 11:41:24', '2025-04-11 11:41:24', 3, 3);
+INSERT INTO `cb_saldo` VALUES (81, 1, 1, '2025-04-11', NULL, NULL, 100000000.00, 0.00, 100000000.00, 3, '2025-04-11 11:41:24', '2025-04-11 11:41:24', 3, 3);
+INSERT INTO `cb_saldo` VALUES (82, 1, 2, '2025-04-11', NULL, NULL, 0.00, 0.00, 0.00, 3, '2025-04-11 11:41:24', '2025-04-11 11:41:24', 3, 3);
+INSERT INTO `cb_saldo` VALUES (83, 1, 1, '2025-04-12', NULL, NULL, 0.00, 0.00, 100000000.00, 3, '2025-04-11 11:41:24', '2025-04-11 11:41:24', 3, 3);
+INSERT INTO `cb_saldo` VALUES (84, 1, 2, '2025-04-12', NULL, NULL, 0.00, 0.00, 0.00, 3, '2025-04-11 11:41:24', '2025-04-11 11:41:24', 3, 3);
+INSERT INTO `cb_saldo` VALUES (85, 1, 1, '2025-04-13', NULL, NULL, 0.00, 0.00, 100000000.00, 3, '2025-04-11 11:41:24', '2025-04-11 11:41:24', 3, 3);
+INSERT INTO `cb_saldo` VALUES (86, 1, 2, '2025-04-13', NULL, NULL, 0.00, 0.00, 0.00, 3, '2025-04-11 11:41:24', '2025-04-11 11:41:24', 3, 3);
+INSERT INTO `cb_saldo` VALUES (87, 1, 1, '2025-04-14', NULL, NULL, 0.00, 0.00, 100000000.00, 3, '2025-04-11 11:41:24', '2025-04-11 11:41:24', 3, 3);
+INSERT INTO `cb_saldo` VALUES (88, 1, 2, '2025-04-14', NULL, NULL, 0.00, 0.00, 0.00, 3, '2025-04-11 11:41:24', '2025-04-11 11:41:24', 3, 3);
+INSERT INTO `cb_saldo` VALUES (89, 1, 1, '2025-04-15', NULL, NULL, 0.00, 0.00, 100000000.00, 3, '2025-04-11 11:41:24', '2025-04-11 11:41:24', 3, 3);
+INSERT INTO `cb_saldo` VALUES (90, 1, 2, '2025-04-15', NULL, NULL, 0.00, 0.00, 0.00, 3, '2025-04-11 11:41:24', '2025-04-11 11:41:24', 3, 3);
+INSERT INTO `cb_saldo` VALUES (91, 1, 1, '2025-04-16', NULL, NULL, 0.00, 0.00, 100000000.00, 3, '2025-04-11 11:41:25', '2025-04-11 11:41:25', 3, 3);
+INSERT INTO `cb_saldo` VALUES (92, 1, 2, '2025-04-16', NULL, NULL, 0.00, 0.00, 0.00, 3, '2025-04-11 11:41:25', '2025-04-11 11:41:25', 3, 3);
+INSERT INTO `cb_saldo` VALUES (93, 1, 1, '2025-04-17', NULL, NULL, 0.00, 0.00, 100000000.00, 3, '2025-04-11 11:41:25', '2025-04-11 11:41:25', 3, 3);
+INSERT INTO `cb_saldo` VALUES (94, 1, 2, '2025-04-17', NULL, NULL, 0.00, 0.00, 0.00, 3, '2025-04-11 11:41:25', '2025-04-11 11:41:25', 3, 3);
+INSERT INTO `cb_saldo` VALUES (95, 1, 1, '2025-04-18', NULL, NULL, 0.00, 0.00, 100000000.00, 3, '2025-04-11 11:41:25', '2025-04-11 11:41:25', 3, 3);
+INSERT INTO `cb_saldo` VALUES (96, 1, 2, '2025-04-18', NULL, NULL, 0.00, 0.00, 0.00, 3, '2025-04-11 11:41:25', '2025-04-11 11:41:25', 3, 3);
+INSERT INTO `cb_saldo` VALUES (97, 1, 1, '2025-04-19', NULL, NULL, 0.00, 0.00, 100000000.00, 3, '2025-04-11 11:41:25', '2025-04-11 11:41:25', 3, 3);
+INSERT INTO `cb_saldo` VALUES (98, 1, 2, '2025-04-19', NULL, NULL, 0.00, 0.00, 0.00, 3, '2025-04-11 11:41:25', '2025-04-11 11:41:25', 3, 3);
+INSERT INTO `cb_saldo` VALUES (99, 1, 1, '2025-04-20', NULL, NULL, 0.00, 0.00, 100000000.00, 3, '2025-04-11 11:41:26', '2025-04-11 11:41:26', 3, 3);
+INSERT INTO `cb_saldo` VALUES (100, 1, 2, '2025-04-20', NULL, NULL, 0.00, 0.00, 0.00, 3, '2025-04-11 11:41:26', '2025-04-11 11:41:26', 3, 3);
+INSERT INTO `cb_saldo` VALUES (101, 1, 1, '2025-04-21', NULL, NULL, 0.00, 0.00, 100000000.00, 3, '2025-04-11 11:41:26', '2025-04-11 11:41:26', 3, 3);
+INSERT INTO `cb_saldo` VALUES (102, 1, 2, '2025-04-21', NULL, NULL, 0.00, 0.00, 0.00, 3, '2025-04-11 11:41:26', '2025-04-11 11:41:26', 3, 3);
+INSERT INTO `cb_saldo` VALUES (103, 1, 1, '2025-04-22', NULL, NULL, 0.00, 0.00, 100000000.00, 3, '2025-04-11 11:41:26', '2025-04-11 11:41:26', 3, 3);
+INSERT INTO `cb_saldo` VALUES (104, 1, 2, '2025-04-22', NULL, NULL, 0.00, 0.00, 0.00, 3, '2025-04-11 11:41:26', '2025-04-11 11:41:26', 3, 3);
+INSERT INTO `cb_saldo` VALUES (105, 1, 1, '2025-04-23', NULL, NULL, 0.00, 0.00, 100000000.00, 3, '2025-04-11 11:41:26', '2025-04-11 11:41:27', 3, 3);
+INSERT INTO `cb_saldo` VALUES (106, 1, 2, '2025-04-23', NULL, NULL, 0.00, 0.00, 0.00, 3, '2025-04-11 11:41:26', '2025-04-11 11:41:27', 3, 3);
+INSERT INTO `cb_saldo` VALUES (107, 1, 1, '2025-04-24', NULL, NULL, 0.00, 0.00, 100000000.00, 3, '2025-04-11 11:41:27', '2025-04-11 11:41:27', 3, 3);
+INSERT INTO `cb_saldo` VALUES (108, 1, 2, '2025-04-24', NULL, NULL, 0.00, 0.00, 0.00, 3, '2025-04-11 11:41:27', '2025-04-11 11:41:27', 3, 3);
+INSERT INTO `cb_saldo` VALUES (109, 1, 1, '2025-04-25', NULL, NULL, 0.00, 0.00, 100000000.00, 3, '2025-04-11 11:41:27', '2025-04-11 11:41:27', 3, 3);
+INSERT INTO `cb_saldo` VALUES (110, 1, 2, '2025-04-25', NULL, NULL, 0.00, 0.00, 0.00, 3, '2025-04-11 11:41:27', '2025-04-11 11:41:27', 3, 3);
+INSERT INTO `cb_saldo` VALUES (111, 1, 1, '2025-04-26', NULL, NULL, 0.00, 0.00, 100000000.00, 3, '2025-04-11 11:41:27', '2025-04-11 11:41:27', 3, 3);
+INSERT INTO `cb_saldo` VALUES (112, 1, 2, '2025-04-26', NULL, NULL, 0.00, 0.00, 0.00, 3, '2025-04-11 11:41:27', '2025-04-11 11:41:27', 3, 3);
+INSERT INTO `cb_saldo` VALUES (113, 1, 1, '2025-04-27', NULL, NULL, 0.00, 0.00, 100000000.00, 3, '2025-04-11 11:41:27', '2025-04-11 11:41:27', 3, 3);
+INSERT INTO `cb_saldo` VALUES (114, 1, 2, '2025-04-27', NULL, NULL, 0.00, 0.00, 0.00, 3, '2025-04-11 11:41:27', '2025-04-11 11:41:27', 3, 3);
+INSERT INTO `cb_saldo` VALUES (115, 1, 1, '2025-04-28', NULL, NULL, 0.00, 0.00, 100000000.00, 3, '2025-04-11 11:41:27', '2025-04-11 11:41:28', 3, 3);
+INSERT INTO `cb_saldo` VALUES (116, 1, 2, '2025-04-28', NULL, NULL, 0.00, 0.00, 0.00, 3, '2025-04-11 11:41:27', '2025-04-11 11:41:28', 3, 3);
+INSERT INTO `cb_saldo` VALUES (117, 1, 1, '2025-04-29', NULL, NULL, 0.00, 0.00, 100000000.00, 3, '2025-04-11 11:41:28', '2025-04-11 11:41:28', 3, 3);
+INSERT INTO `cb_saldo` VALUES (118, 1, 2, '2025-04-29', NULL, NULL, 0.00, 0.00, 0.00, 3, '2025-04-11 11:41:28', '2025-04-11 11:41:28', 3, 3);
+INSERT INTO `cb_saldo` VALUES (119, 1, 1, '2025-04-30', NULL, NULL, 0.00, 0.00, 100000000.00, 3, '2025-04-11 11:41:28', '2025-04-11 11:41:28', 3, 3);
+INSERT INTO `cb_saldo` VALUES (120, 1, 2, '2025-04-30', NULL, NULL, 0.00, 0.00, 0.00, 3, '2025-04-11 11:41:28', '2025-04-11 11:41:28', 3, 3);
 
 -- ----------------------------
 -- Table structure for dttot
@@ -160,6 +359,7 @@ CREATE TABLE `m_customer`  (
 -- ----------------------------
 -- Records of m_customer
 -- ----------------------------
+INSERT INTO `m_customer` VALUES (1, 1, 1, '250411010001', '75O0YPVYM', '', 'GEDE', '', 'JAKARTA', '', '', '', '', '', '1900-01-01', 0, 1, '1234588000000001', 0, 0, '', NULL, 1, '2025-04-11 16:11:53', '2025-04-11 16:12:11', 2, 2);
 
 -- ----------------------------
 -- Table structure for m_customer_nationality
@@ -275,7 +475,7 @@ CREATE TABLE `m_user`  (
 -- Records of m_user
 -- ----------------------------
 INSERT INTO `m_user` VALUES (1, 1, 'admin', '123', 'Admin', 1, 1, 'Y', 'Y', 'Y', 'Y', 1, '2025-01-19 09:00:00', NULL, NULL, NULL);
-INSERT INTO `m_user` VALUES (2, 1, 'konter', '123', 'Kasir', 2, 1, 'Y', 'Y', 'Y', 'Y', 1, '2025-01-19 09:00:00', NULL, NULL, NULL);
+INSERT INTO `m_user` VALUES (2, 1, 'konter', '123', 'Konter', 2, 1, 'Y', 'Y', 'Y', 'Y', 1, '2025-01-19 09:00:00', NULL, NULL, NULL);
 INSERT INTO `m_user` VALUES (3, 1, 'kasir', '123', 'Kasir', 3, 1, 'Y', 'Y', 'Y', 'Y', 1, '2025-01-19 09:00:00', NULL, NULL, NULL);
 
 -- ----------------------------
@@ -361,6 +561,7 @@ CREATE TABLE `st_valas`  (
 -- ----------------------------
 -- Records of st_valas
 -- ----------------------------
+INSERT INTO `st_valas` VALUES (1, 1, 17, 2025, 4, 0, 0, '2025-04-11 16:12:19', NULL, 2, NULL);
 
 -- ----------------------------
 -- Table structure for st_valas_avg
@@ -419,6 +620,7 @@ CREATE TABLE `tr_bayar`  (
 -- ----------------------------
 -- Records of tr_bayar
 -- ----------------------------
+INSERT INTO `tr_bayar` VALUES (1, 1, 1, '25041101010001', '2025-04-11', 1, 16000000.000, 'Pembelian Valas Tunai                                                                                                                                 ', 3, '2025-04-11 16:12:49', NULL, 2, NULL);
 
 -- ----------------------------
 -- Table structure for tr_detail
@@ -444,6 +646,7 @@ CREATE TABLE `tr_detail`  (
 -- ----------------------------
 -- Records of tr_detail
 -- ----------------------------
+INSERT INTO `tr_detail` VALUES (1, 1, 1, '25041101010001', '2025-04-11', 17, 1000.000, 16000.000, 16000000.000, 3, '2025-04-11 16:12:19', NULL, 2, NULL);
 
 -- ----------------------------
 -- Table structure for tr_header
@@ -476,6 +679,7 @@ CREATE TABLE `tr_header`  (
 -- ----------------------------
 -- Records of tr_header
 -- ----------------------------
+INSERT INTO `tr_header` VALUES (1, 1, 1, '25041101010001', '2025-04-11', 1, 0, NULL, 0, '', '', '', 1, 2, 2, 3, '2025-04-11 16:12:19', NULL, 2, NULL);
 
 -- ----------------------------
 -- View structure for v_st2

@@ -8,7 +8,7 @@ ELSE
 	versi01 = 'Y' && kalo versi baru ganti jadi T
 	
 	PUBLIC ltglexp
-	ltglexp = VAL('20250531') &&VAL('20261231') &&VAL(DTOS(DATE()))
+	ltglexp = VAL('20261231') &&VAL('20250531') &&VAL(DTOS(DATE()))
 	
 	** Versi Lama
 	** ----------------------------------------------------------------------------------	
@@ -18,8 +18,8 @@ ELSE
 	** ----------------------------------------------------------------------------------
 	** Versi Baru
 	** ----------------------------------------------------------------------------------	
-	cKey = '041D-2969' && Acer
-	*cKey = '30D7-5545' && DMA
+	*cKey = '041D-2969' && Acer
+	cKey = '30D7-5545' && DMA
 		
 	*cKey = 'E048-F9C8' && PERMATA VALAS UTAMA 17-03-2025
 	*cKey = '6AFB-64FD' && INDOCEV CITRALAND 17-03-2025

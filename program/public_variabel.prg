@@ -1,5 +1,5 @@
 public xcompanyid
-xcompanyid = 1
+xcompanyid = 0
 
 *--------------------------------------------------------------------------------------
 ** variable user
@@ -25,8 +25,8 @@ xidkasir = 0
 xnmkasir = ''
 
 public xinsert, xupdate, xdelete, xcancel
-xinsert = 'Y'
-xupdate = 'Y'	
+xinsert = ''
+xupdate = ''	
 xdelete = ''	
 xcancel = ''	
 ** end variable user
