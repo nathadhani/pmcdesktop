@@ -1,5 +1,5 @@
 public xcompanyid
-xcompanyid = 1
+xcompanyid = 0
 
 *--------------------------------------------------------------------------------------
 ** variable user
