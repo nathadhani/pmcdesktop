@@ -1,0 +1,15 @@
+***************************************************************************
+*** Cara Baca Serial Number dari Hardisk Pake Command Prompt 			***
+*** ketik command di drive C:\VOL > ser.txt								***
+*** maka hasilnya berupa textfile di drive E:\ser.txt					***
+
+*!*	oDrives=CREATEOBJECT('Scripting.FileSystemObject')
+*!*	xString = ALLTRIM(STR(oDrives.Drives('C:').SerialNumber))
+** atau pake dibawah ini
+*!*	xString = ReadSerialDiskDrive('C:')
+*!*	Fl_ser = 'ser.txt'
+*!*	=StrToFile(xString,Fl_ser,1)
+*!*	CLOSE ALL
+*!*	QUIT 
+*!*	CLEAR EVENTS  
+***************************************************************************

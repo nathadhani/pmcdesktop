@@ -1,0 +1,4 @@
+Public fPath
+fPath = SYS(5)+SYS(2003)
+SET PATH TO (fPath)  ADDITIVE  
+SET PATH TO ./CLASS,./FORM,./ICON,./REPORT,./PROGRAM,./TEXT
