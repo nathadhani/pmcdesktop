@@ -1,6 +1,6 @@
 *       *********************************************************
 *       *                                                         
-*       * 08/05/2025          MENU_ADMIN.MPR            10:12:40  
+*       * 14/05/2025          MENU_ADMIN.MPR            16:09:34  
 *       *                                                         
 *       *********************************************************
 *       *                                                         
@@ -124,14 +124,14 @@ ENDIF
 
 DEFINE MENU (m.cMenuName) IN (m.oFormRef.Name) BAR
 
-DEFINE PAD _76f0lvwvd OF (m.cMenuName) PROMPT "File" COLOR SCHEME 3 ;
+DEFINE PAD _76l0ymvwy OF (m.cMenuName) PROMPT "File" COLOR SCHEME 3 ;
 	KEY ALT+F, "" ;
 	SKIP FOR lmenuof
-DEFINE PAD _76f0lvwve OF (m.cMenuName) PROMPT "Transaksi" COLOR SCHEME 3 ;
+DEFINE PAD _76l0ymvwz OF (m.cMenuName) PROMPT "Transaksi" COLOR SCHEME 3 ;
 	KEY ALT+T, "" ;
 	SKIP FOR lmenuof
-ON PAD _76f0lvwvd OF (m.cMenuName) ACTIVATE POPUP (a_menupops[1])
-ON PAD _76f0lvwve OF (m.cMenuName) ACTIVATE POPUP (a_menupops[3])
+ON PAD _76l0ymvwy OF (m.cMenuName) ACTIVATE POPUP (a_menupops[1])
+ON PAD _76l0ymvwz OF (m.cMenuName) ACTIVATE POPUP (a_menupops[3])
 
 DEFINE POPUP (a_menupops[1]) MARGIN RELATIVE SHADOW COLOR SCHEME 4
 DEFINE BAR 1 OF (a_menupops[1]) PROMPT "Data Kurs Per Tanggal"
@@ -149,26 +149,26 @@ DEFINE BAR 10 OF (a_menupops[1]) PROMPT "\-"
 DEFINE BAR 11 OF (a_menupops[1]) PROMPT "Ganti Password"
 DEFINE BAR 12 OF (a_menupops[1]) PROMPT "Keluar"
 ON SELECTION BAR 1 OF (a_menupops[1]) ;
-	DO _76f0lvwvf ;
+	DO _76l0ymvx0 ;
 	IN LOCFILE("PMCDESKTOP\MENU\MENU_ADMIN" ,"MPX;MPR|FXP;PRG" ,"WHERE is MENU_ADMIN?")
 ON SELECTION BAR 3 OF (a_menupops[1]) ;
-	DO _76f0lvwvg ;
+	DO _76l0ymvx1 ;
 	IN LOCFILE("PMCDESKTOP\MENU\MENU_ADMIN" ,"MPX;MPR|FXP;PRG" ,"WHERE is MENU_ADMIN?")
 ON SELECTION BAR 4 OF (a_menupops[1]) ;
-	DO _76f0lvwvh ;
+	DO _76l0ymvx2 ;
 	IN LOCFILE("PMCDESKTOP\MENU\MENU_ADMIN" ,"MPX;MPR|FXP;PRG" ,"WHERE is MENU_ADMIN?")
 ON SELECTION BAR 5 OF (a_menupops[1]) ;
-	DO _76f0lvwvi ;
+	DO _76l0ymvx3 ;
 	IN LOCFILE("PMCDESKTOP\MENU\MENU_ADMIN" ,"MPX;MPR|FXP;PRG" ,"WHERE is MENU_ADMIN?")
 ON SELECTION BAR 7 OF (a_menupops[1]) ;
-	DO _76f0lvwvj ;
+	DO _76l0ymvx4 ;
 	IN LOCFILE("PMCDESKTOP\MENU\MENU_ADMIN" ,"MPX;MPR|FXP;PRG" ,"WHERE is MENU_ADMIN?")
 ON BAR 9 OF (a_menupops[1]) ACTIVATE POPUP (a_menupops[2])
 ON SELECTION BAR 11 OF (a_menupops[1]) ;
-	DO _76f0lvwvk ;
+	DO _76l0ymvx5 ;
 	IN LOCFILE("PMCDESKTOP\MENU\MENU_ADMIN" ,"MPX;MPR|FXP;PRG" ,"WHERE is MENU_ADMIN?")
 ON SELECTION BAR 12 OF (a_menupops[1]) ;
-	DO _76f0lvwvl ;
+	DO _76l0ymvx6 ;
 	IN LOCFILE("PMCDESKTOP\MENU\MENU_ADMIN" ,"MPX;MPR|FXP;PRG" ,"WHERE is MENU_ADMIN?")
 
 DEFINE POPUP (a_menupops[2]) MARGIN RELATIVE SHADOW COLOR SCHEME 4
@@ -181,22 +181,22 @@ DEFINE BAR 6 OF (a_menupops[2]) PROMPT "\-"
 DEFINE BAR 7 OF (a_menupops[2]) PROMPT "Data Transaksi - Pengguna Jasa ( Rekap )"
 DEFINE BAR 8 OF (a_menupops[2]) PROMPT "Data Transaksi - Frekuensi ( Rekap )"
 ON SELECTION BAR 1 OF (a_menupops[2]) ;
-	DO _76f0lvwvm ;
+	DO _76l0ymvx7 ;
 	IN LOCFILE("PMCDESKTOP\MENU\MENU_ADMIN" ,"MPX;MPR|FXP;PRG" ,"WHERE is MENU_ADMIN?")
 ON SELECTION BAR 2 OF (a_menupops[2]) ;
-	DO _76f0lvwvn ;
+	DO _76l0ymvx8 ;
 	IN LOCFILE("PMCDESKTOP\MENU\MENU_ADMIN" ,"MPX;MPR|FXP;PRG" ,"WHERE is MENU_ADMIN?")
 ON SELECTION BAR 4 OF (a_menupops[2]) ;
-	DO _76f0lvwvo ;
+	DO _76l0ymvx9 ;
 	IN LOCFILE("PMCDESKTOP\MENU\MENU_ADMIN" ,"MPX;MPR|FXP;PRG" ,"WHERE is MENU_ADMIN?")
 ON SELECTION BAR 5 OF (a_menupops[2]) ;
-	DO _76f0lvwvp ;
+	DO _76l0ymvxa ;
 	IN LOCFILE("PMCDESKTOP\MENU\MENU_ADMIN" ,"MPX;MPR|FXP;PRG" ,"WHERE is MENU_ADMIN?")
 ON SELECTION BAR 7 OF (a_menupops[2]) ;
-	DO _76f0lvwvq ;
+	DO _76l0ymvxb ;
 	IN LOCFILE("PMCDESKTOP\MENU\MENU_ADMIN" ,"MPX;MPR|FXP;PRG" ,"WHERE is MENU_ADMIN?")
 ON SELECTION BAR 8 OF (a_menupops[2]) ;
-	DO _76f0lvwvr ;
+	DO _76l0ymvxc ;
 	IN LOCFILE("PMCDESKTOP\MENU\MENU_ADMIN" ,"MPX;MPR|FXP;PRG" ,"WHERE is MENU_ADMIN?")
 
 DEFINE POPUP (a_menupops[3]) MARGIN RELATIVE SHADOW COLOR SCHEME 4
@@ -213,31 +213,31 @@ DEFINE BAR 10 OF (a_menupops[3]) PROMPT "\-"
 DEFINE BAR 11 OF (a_menupops[3]) PROMPT "Transaksi Beli / Jual - Riwayat Per Mata Uang"
 DEFINE BAR 12 OF (a_menupops[3]) PROMPT "Transaksi - Stok Akhir"
 ON SELECTION BAR 1 OF (a_menupops[3]) ;
-	DO _76f0lvwvs ;
+	DO _76l0ymvxd ;
 	IN LOCFILE("PMCDESKTOP\MENU\MENU_ADMIN" ,"MPX;MPR|FXP;PRG" ,"WHERE is MENU_ADMIN?")
 ON SELECTION BAR 3 OF (a_menupops[3]) ;
-	DO _76f0lvwvt ;
+	DO _76l0ymvxe ;
 	IN LOCFILE("PMCDESKTOP\MENU\MENU_ADMIN" ,"MPX;MPR|FXP;PRG" ,"WHERE is MENU_ADMIN?")
 ON SELECTION BAR 4 OF (a_menupops[3]) ;
-	DO _76f0lvwvu ;
+	DO _76l0ymvxf ;
 	IN LOCFILE("PMCDESKTOP\MENU\MENU_ADMIN" ,"MPX;MPR|FXP;PRG" ,"WHERE is MENU_ADMIN?")
 ON SELECTION BAR 6 OF (a_menupops[3]) ;
-	DO _76f0lvwvv ;
+	DO _76l0ymvxg ;
 	IN LOCFILE("PMCDESKTOP\MENU\MENU_ADMIN" ,"MPX;MPR|FXP;PRG" ,"WHERE is MENU_ADMIN?")
 ON SELECTION BAR 7 OF (a_menupops[3]) ;
-	DO _76f0lvwvw ;
+	DO _76l0ymvxh ;
 	IN LOCFILE("PMCDESKTOP\MENU\MENU_ADMIN" ,"MPX;MPR|FXP;PRG" ,"WHERE is MENU_ADMIN?")
 ON SELECTION BAR 8 OF (a_menupops[3]) ;
-	DO _76f0lvwvx ;
+	DO _76l0ymvxi ;
 	IN LOCFILE("PMCDESKTOP\MENU\MENU_ADMIN" ,"MPX;MPR|FXP;PRG" ,"WHERE is MENU_ADMIN?")
 ON SELECTION BAR 9 OF (a_menupops[3]) ;
-	DO _76f0lvwvy ;
+	DO _76l0ymvxj ;
 	IN LOCFILE("PMCDESKTOP\MENU\MENU_ADMIN" ,"MPX;MPR|FXP;PRG" ,"WHERE is MENU_ADMIN?")
 ON SELECTION BAR 11 OF (a_menupops[3]) ;
-	DO _76f0lvwvz ;
+	DO _76l0ymvxk ;
 	IN LOCFILE("PMCDESKTOP\MENU\MENU_ADMIN" ,"MPX;MPR|FXP;PRG" ,"WHERE is MENU_ADMIN?")
 ON SELECTION BAR 12 OF (a_menupops[3]) ;
-	DO _76f0lvww0 ;
+	DO _76l0ymvxl ;
 	IN LOCFILE("PMCDESKTOP\MENU\MENU_ADMIN" ,"MPX;MPR|FXP;PRG" ,"WHERE is MENU_ADMIN?")
 
 ACTIVATE MENU (m.cMenuName) NOWAIT
@@ -250,7 +250,7 @@ ENDIF
 
 *       *********************************************************
 *       *                                                         
-*       * _76F0LVWVF  ON SELECTION BAR 1 OF POPUP file            
+*       * _76L0YMVX0  ON SELECTION BAR 1 OF POPUP file            
 *       *                                                         
 *       * Procedure Origin:                                       
 *       *                                                         
@@ -261,7 +261,7 @@ ENDIF
 *       *                                                         
 *       *********************************************************
 *
-PROCEDURE _76f0lvwvf
+PROCEDURE _76l0ymvx0
 IF TYPE('xUSERGROUP') == 'N'
 	IF xUSERGROUP = 1 .OR. xUSERGROUP = 2
 		DO 'program\cek_closing.prg'
@@ -283,7 +283,7 @@ ENDIF
 
 *       *********************************************************
 *       *                                                         
-*       * _76F0LVWVG  ON SELECTION BAR 3 OF POPUP file            
+*       * _76L0YMVX1  ON SELECTION BAR 3 OF POPUP file            
 *       *                                                         
 *       * Procedure Origin:                                       
 *       *                                                         
@@ -294,13 +294,13 @@ ENDIF
 *       *                                                         
 *       *********************************************************
 *
-PROCEDURE _76f0lvwvg
+PROCEDURE _76l0ymvx1
 DO FORM 'form\frm_m_customer_nationality_view.scx'
 
 
 *       *********************************************************
 *       *                                                         
-*       * _76F0LVWVH  ON SELECTION BAR 4 OF POPUP file            
+*       * _76L0YMVX2  ON SELECTION BAR 4 OF POPUP file            
 *       *                                                         
 *       * Procedure Origin:                                       
 *       *                                                         
@@ -311,13 +311,13 @@ DO FORM 'form\frm_m_customer_nationality_view.scx'
 *       *                                                         
 *       *********************************************************
 *
-PROCEDURE _76f0lvwvh
+PROCEDURE _76l0ymvx2
 DO FORM 'form\frm_m_customer_work_view.scx'
 
 
 *       *********************************************************
 *       *                                                         
-*       * _76F0LVWVI  ON SELECTION BAR 5 OF POPUP file            
+*       * _76L0YMVX3  ON SELECTION BAR 5 OF POPUP file            
 *       *                                                         
 *       * Procedure Origin:                                       
 *       *                                                         
@@ -328,13 +328,13 @@ DO FORM 'form\frm_m_customer_work_view.scx'
 *       *                                                         
 *       *********************************************************
 *
-PROCEDURE _76f0lvwvi
+PROCEDURE _76l0ymvx3
 DO FORM 'form\frm_ppatk_dttot_view.scx'
 
 
 *       *********************************************************
 *       *                                                         
-*       * _76F0LVWVJ  ON SELECTION BAR 7 OF POPUP file            
+*       * _76L0YMVX4  ON SELECTION BAR 7 OF POPUP file            
 *       *                                                         
 *       * Procedure Origin:                                       
 *       *                                                         
@@ -345,13 +345,13 @@ DO FORM 'form\frm_ppatk_dttot_view.scx'
 *       *                                                         
 *       *********************************************************
 *
-PROCEDURE _76f0lvwvj
+PROCEDURE _76l0ymvx4
 DO FORM 'form\frm_m_valas_view.scx'
 
 
 *       *********************************************************
 *       *                                                         
-*       * _76F0LVWVK  ON SELECTION BAR 11 OF POPUP file           
+*       * _76L0YMVX5  ON SELECTION BAR 11 OF POPUP file           
 *       *                                                         
 *       * Procedure Origin:                                       
 *       *                                                         
@@ -362,13 +362,13 @@ DO FORM 'form\frm_m_valas_view.scx'
 *       *                                                         
 *       *********************************************************
 *
-PROCEDURE _76f0lvwvk
+PROCEDURE _76l0ymvx5
 DO FORM\frm_m_user_password.scx
 
 
 *       *********************************************************
 *       *                                                         
-*       * _76F0LVWVL  ON SELECTION BAR 12 OF POPUP file           
+*       * _76L0YMVX6  ON SELECTION BAR 12 OF POPUP file           
 *       *                                                         
 *       * Procedure Origin:                                       
 *       *                                                         
@@ -379,7 +379,7 @@ DO FORM\frm_m_user_password.scx
 *       *                                                         
 *       *********************************************************
 *
-PROCEDURE _76f0lvwvl
+PROCEDURE _76l0ymvx6
 Tanya = MESSAGEBOX('Keluar dari aplikasi (Yes/No)',4+32,'Tanya')
 IF Tanya = 6
 	IF TYPE('konek') = 'N'
@@ -403,7 +403,7 @@ ENDIF
 
 *       *********************************************************
 *       *                                                         
-*       * _76F0LVWVM  ON SELECTION BAR 1 OF POPUP export          
+*       * _76L0YMVX7  ON SELECTION BAR 1 OF POPUP export          
 *       *                                                         
 *       * Procedure Origin:                                       
 *       *                                                         
@@ -414,13 +414,13 @@ ENDIF
 *       *                                                         
 *       *********************************************************
 *
-PROCEDURE _76f0lvwvm
+PROCEDURE _76l0ymvx7
 DO 'program\export_data_nasabah.prg'
 
 
 *       *********************************************************
 *       *                                                         
-*       * _76F0LVWVN  ON SELECTION BAR 2 OF POPUP export          
+*       * _76L0YMVX8  ON SELECTION BAR 2 OF POPUP export          
 *       *                                                         
 *       * Procedure Origin:                                       
 *       *                                                         
@@ -431,13 +431,13 @@ DO 'program\export_data_nasabah.prg'
 *       *                                                         
 *       *********************************************************
 *
-PROCEDURE _76f0lvwvn
+PROCEDURE _76l0ymvx8
 DO FORM 'form\frm_ppatk_sipesat.scx'
 
 
 *       *********************************************************
 *       *                                                         
-*       * _76F0LVWVO  ON SELECTION BAR 4 OF POPUP export          
+*       * _76L0YMVX9  ON SELECTION BAR 4 OF POPUP export          
 *       *                                                         
 *       * Procedure Origin:                                       
 *       *                                                         
@@ -448,13 +448,13 @@ DO FORM 'form\frm_ppatk_sipesat.scx'
 *       *                                                         
 *       *********************************************************
 *
-PROCEDURE _76f0lvwvo
+PROCEDURE _76l0ymvx9
 DO FORM 'form\frm_transaksi_rawdata.scx'
 
 
 *       *********************************************************
 *       *                                                         
-*       * _76F0LVWVP  ON SELECTION BAR 5 OF POPUP export          
+*       * _76L0YMVXA  ON SELECTION BAR 5 OF POPUP export          
 *       *                                                         
 *       * Procedure Origin:                                       
 *       *                                                         
@@ -465,13 +465,13 @@ DO FORM 'form\frm_transaksi_rawdata.scx'
 *       *                                                         
 *       *********************************************************
 *
-PROCEDURE _76f0lvwvp
+PROCEDURE _76l0ymvxa
 DO 'program\export_data_summary_trx.prg'
 
 
 *       *********************************************************
 *       *                                                         
-*       * _76F0LVWVQ  ON SELECTION BAR 7 OF POPUP export          
+*       * _76L0YMVXB  ON SELECTION BAR 7 OF POPUP export          
 *       *                                                         
 *       * Procedure Origin:                                       
 *       *                                                         
@@ -482,13 +482,13 @@ DO 'program\export_data_summary_trx.prg'
 *       *                                                         
 *       *********************************************************
 *
-PROCEDURE _76f0lvwvq
+PROCEDURE _76l0ymvxb
 DO 'program\export_data_pengguna_jasa.prg'
 
 
 *       *********************************************************
 *       *                                                         
-*       * _76F0LVWVR  ON SELECTION BAR 8 OF POPUP export          
+*       * _76L0YMVXC  ON SELECTION BAR 8 OF POPUP export          
 *       *                                                         
 *       * Procedure Origin:                                       
 *       *                                                         
@@ -499,13 +499,13 @@ DO 'program\export_data_pengguna_jasa.prg'
 *       *                                                         
 *       *********************************************************
 *
-PROCEDURE _76f0lvwvr
+PROCEDURE _76l0ymvxc
 DO 'program\export_data_frekuensi_transaksi.prg'
 
 
 *       *********************************************************
 *       *                                                         
-*       * _76F0LVWVS  ON SELECTION BAR 1 OF POPUP transaksi       
+*       * _76L0YMVXD  ON SELECTION BAR 1 OF POPUP transaksi       
 *       *                                                         
 *       * Procedure Origin:                                       
 *       *                                                         
@@ -516,7 +516,7 @@ DO 'program\export_data_frekuensi_transaksi.prg'
 *       *                                                         
 *       *********************************************************
 *
-PROCEDURE _76f0lvwvs
+PROCEDURE _76l0ymvxd
 IF TYPE('xUSERGROUP') == 'N'
 	IF xUSERGROUP = 1 .OR. xUSERGROUP = 2
 		DO 'program\cek_closing.prg'
@@ -539,7 +539,7 @@ ENDIF
 
 *       *********************************************************
 *       *                                                         
-*       * _76F0LVWVT  ON SELECTION BAR 3 OF POPUP transaksi       
+*       * _76L0YMVXE  ON SELECTION BAR 3 OF POPUP transaksi       
 *       *                                                         
 *       * Procedure Origin:                                       
 *       *                                                         
@@ -550,7 +550,7 @@ ENDIF
 *       *                                                         
 *       *********************************************************
 *
-PROCEDURE _76f0lvwvt
+PROCEDURE _76l0ymvxe
 IF TYPE('xUSERGROUP') == 'N'
 	IF xUSERGROUP = 1 .OR. xUSERGROUP = 2
 		mJNSID = 1
@@ -563,7 +563,7 @@ ENDIF
 
 *       *********************************************************
 *       *                                                         
-*       * _76F0LVWVU  ON SELECTION BAR 4 OF POPUP transaksi       
+*       * _76L0YMVXF  ON SELECTION BAR 4 OF POPUP transaksi       
 *       *                                                         
 *       * Procedure Origin:                                       
 *       *                                                         
@@ -574,7 +574,7 @@ ENDIF
 *       *                                                         
 *       *********************************************************
 *
-PROCEDURE _76f0lvwvu
+PROCEDURE _76l0ymvxf
 IF TYPE('xUSERGROUP') == 'N'
 	IF xUSERGROUP = 1 .OR. xUSERGROUP = 2
 		mJNSID = 2
@@ -587,7 +587,7 @@ ENDIF
 
 *       *********************************************************
 *       *                                                         
-*       * _76F0LVWVV  ON SELECTION BAR 6 OF POPUP transaksi       
+*       * _76L0YMVXG  ON SELECTION BAR 6 OF POPUP transaksi       
 *       *                                                         
 *       * Procedure Origin:                                       
 *       *                                                         
@@ -598,7 +598,7 @@ ENDIF
 *       *                                                         
 *       *********************************************************
 *
-PROCEDURE _76f0lvwvv
+PROCEDURE _76l0ymvxg
 IF TYPE('xUSERGROUP') == 'N'
 	IF xUSERGROUP = 1 .OR. xUSERGROUP = 2
 		mTahun = YEAR(DATE())
@@ -616,7 +616,7 @@ ENDIF
 
 *       *********************************************************
 *       *                                                         
-*       * _76F0LVWVW  ON SELECTION BAR 7 OF POPUP transaksi       
+*       * _76L0YMVXH  ON SELECTION BAR 7 OF POPUP transaksi       
 *       *                                                         
 *       * Procedure Origin:                                       
 *       *                                                         
@@ -627,7 +627,7 @@ ENDIF
 *       *                                                         
 *       *********************************************************
 *
-PROCEDURE _76f0lvwvw
+PROCEDURE _76l0ymvxh
 DO FORM 'form\frm_transaksi_by_date.scx'
 
 
@@ -635,7 +635,7 @@ DO FORM 'form\frm_transaksi_by_date.scx'
 
 *       *********************************************************
 *       *                                                         
-*       * _76F0LVWVX  ON SELECTION BAR 8 OF POPUP transaksi       
+*       * _76L0YMVXI  ON SELECTION BAR 8 OF POPUP transaksi       
 *       *                                                         
 *       * Procedure Origin:                                       
 *       *                                                         
@@ -646,13 +646,13 @@ DO FORM 'form\frm_transaksi_by_date.scx'
 *       *                                                         
 *       *********************************************************
 *
-PROCEDURE _76f0lvwvx
+PROCEDURE _76l0ymvxi
 DO FORM 'form\frm_transaksi_by_month.scx'
 
 
 *       *********************************************************
 *       *                                                         
-*       * _76F0LVWVY  ON SELECTION BAR 9 OF POPUP transaksi       
+*       * _76L0YMVXJ  ON SELECTION BAR 9 OF POPUP transaksi       
 *       *                                                         
 *       * Procedure Origin:                                       
 *       *                                                         
@@ -663,13 +663,13 @@ DO FORM 'form\frm_transaksi_by_month.scx'
 *       *                                                         
 *       *********************************************************
 *
-PROCEDURE _76f0lvwvy
+PROCEDURE _76l0ymvxj
 DO FORM 'form\frm_transaksi_by_year.scx'
 
 
 *       *********************************************************
 *       *                                                         
-*       * _76F0LVWVZ  ON SELECTION BAR 11 OF POPUP transaksi      
+*       * _76L0YMVXK  ON SELECTION BAR 11 OF POPUP transaksi      
 *       *                                                         
 *       * Procedure Origin:                                       
 *       *                                                         
@@ -680,13 +680,13 @@ DO FORM 'form\frm_transaksi_by_year.scx'
 *       *                                                         
 *       *********************************************************
 *
-PROCEDURE _76f0lvwvz
+PROCEDURE _76l0ymvxk
 DO FORM 'form\frm_transaksi_by_valas.scx'
 
 
 *       *********************************************************
 *       *                                                         
-*       * _76F0LVWW0  ON SELECTION BAR 12 OF POPUP transaksi      
+*       * _76L0YMVXL  ON SELECTION BAR 12 OF POPUP transaksi      
 *       *                                                         
 *       * Procedure Origin:                                       
 *       *                                                         
@@ -697,7 +697,7 @@ DO FORM 'form\frm_transaksi_by_valas.scx'
 *       *                                                         
 *       *********************************************************
 *
-PROCEDURE _76f0lvww0
+PROCEDURE _76l0ymvxl
 IF TYPE('xUSERGROUP') == 'N'
 	IF xUSERGROUP = 1 .OR. xUSERGROUP = 2
 		DO FORM 'form\frm_transaksi_stock.scx'
